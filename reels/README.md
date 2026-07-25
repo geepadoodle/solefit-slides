@@ -39,6 +39,20 @@ node build-reels.mjs r01-not-a-size-10  # just one
 Frames are rendered deterministically in headless Chromium (no wall clock), so
 the same spec always produces the same video.
 
+## Publishing
+
+`_tools/publish-reel.mjs` posts a reel to Instagram through Meta's Content
+Publishing API — see [`PUBLISHING.md`](PUBLISHING.md) for the account setup and
+the caveats. Preflight anything before you post it:
+
+```bash
+cd _tools && node publish-reel.mjs r01-not-a-size-10 --dry-run
+```
+
+Note that the API cannot attach trending audio; reels published this way go out
+silent. Uploading through the Instagram app is still the better option when the
+audio matters.
+
 ## Facts
 
 The numbers on screen come from the app's own fit constants — 1 US size =
