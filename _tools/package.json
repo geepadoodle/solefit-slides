@@ -1,0 +1,13 @@
+{
+  "name": "solefit-reels-tools",
+  "private": true,
+  "type": "module",
+  "description": "Renders the SoleFit reels in reels/ from the specs in _tools/reels/.",
+  "scripts": {
+    "build": "node build-reels.mjs"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "playwright": "^1.49.0"
+  }
+}

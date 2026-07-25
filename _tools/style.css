@@ -1,0 +1,195 @@
+/* SoleFit reel frames — 1080 x 1920, matches the carousel slide design system. */
+
+@font-face { font-family: Inter; font-weight: 400; src: url("fonts/Inter-Regular.ttf")   format("truetype"); }
+@font-face { font-family: Inter; font-weight: 500; src: url("fonts/Inter-Medium.ttf")    format("truetype"); }
+@font-face { font-family: Inter; font-weight: 600; src: url("fonts/Inter-SemiBold.ttf")  format("truetype"); }
+@font-face { font-family: Inter; font-weight: 700; src: url("fonts/Inter-Bold.ttf")      format("truetype"); }
+@font-face { font-family: Inter; font-weight: 800; src: url("fonts/Inter-ExtraBold.ttf") format("truetype"); }
+
+:root {
+  --bg:        #FFFFFF;
+  --ink:       #111113;
+  --muted:     #52525B;
+  --faint:     #8A8A8F;
+  --line:      #E6E6E9;
+  --fill:      #F2F2F4;
+  --red:       #EF4444;
+  --red-deep:  #B3272B;
+
+  /* Reels safe area: IG overlays the username/caption/audio row and the
+     like/comment/share rail. Nothing that must be read goes in these bands. */
+  --safe-top:    190px;
+  --safe-bottom: 470px;
+  --safe-right:  190px;
+  --gutter:      92px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 1080px; height: 1920px;
+  background: var(--bg);
+  font-family: Inter, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  overflow: hidden;
+}
+
+/* ---------- scene scaffolding ---------- */
+
+.scene {
+  position: absolute; inset: 0;
+  display: none;
+  padding: var(--safe-top) var(--gutter) var(--safe-bottom);
+  background: var(--bg);
+}
+.scene.on { display: block; }
+
+/* Everything inside drifts a touch over the life of the scene so no frame is
+   ever perfectly static — the thing that separates a reel from a slideshow. */
+.stage {
+  position: absolute;
+  left: var(--gutter); right: var(--gutter);
+  top: var(--safe-top); bottom: var(--safe-bottom);
+  display: flex; flex-direction: column; justify-content: center;
+  transform-origin: 50% 46%;
+  will-change: transform;
+}
+.stage.top    { justify-content: flex-start; }
+.stage.bottom { justify-content: flex-end; }
+
+/* ---------- persistent chrome ---------- */
+
+.brand {
+  position: absolute; left: var(--gutter); top: 118px;
+  display: flex; align-items: center; gap: 20px;
+  font-size: 40px; font-weight: 800; letter-spacing: -0.02em;
+}
+.brand i {
+  width: 26px; height: 26px; border-radius: 999px;
+  background: var(--red);
+  box-shadow: 0 0 26px rgba(239, 68, 68, 0.55);
+}
+.counter {
+  position: absolute; right: var(--gutter); top: 126px;
+  font-size: 30px; font-weight: 600; letter-spacing: 0.16em;
+  color: var(--faint); font-variant-numeric: tabular-nums;
+}
+
+.track {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 386px;
+  height: 6px; border-radius: 999px; background: var(--fill);
+}
+.track b { display: block; height: 100%; border-radius: 999px; background: var(--red); }
+
+/* ---------- type ---------- */
+
+.kicker {
+  display: inline-flex; align-items: center;
+  padding: 22px 40px; margin-bottom: 46px;
+  border-radius: 999px; background: var(--red); color: #fff;
+  font-size: 30px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+  box-shadow: 0 0 44px rgba(239, 68, 68, 0.42);
+  align-self: flex-start;
+}
+.kicker.ghost {
+  background: var(--fill); color: var(--muted); box-shadow: none;
+}
+
+h1 { font-size: 118px; font-weight: 800; line-height: 0.95; letter-spacing: -0.038em; }
+h1.sm { font-size: 104px; }
+h2 { font-size: 92px;  font-weight: 800; line-height: 1.0;  letter-spacing: -0.032em; }
+h1 em, h2 em { font-style: normal; color: var(--red); }
+h1 s, h2 s { text-decoration-thickness: 8px; text-decoration-color: var(--red); }
+
+p {
+  font-size: 42px; font-weight: 400; line-height: 1.36; color: var(--muted);
+  letter-spacing: -0.01em; max-width: 820px;
+}
+p.lead { font-size: 48px; }
+p.tight { margin-top: 34px; }
+strong { font-weight: 700; color: var(--ink); }
+
+.numeral {
+  font-size: 108px; font-weight: 800; color: var(--red-deep);
+  line-height: 1; letter-spacing: -0.04em; margin-bottom: 24px;
+}
+
+/* ---------- stat block ---------- */
+
+.stat {
+  font-size: 250px; font-weight: 800; line-height: 0.86;
+  letter-spacing: -0.055em; font-variant-numeric: tabular-nums;
+}
+.stat u { text-decoration: none; font-size: 96px; letter-spacing: -0.02em; color: var(--faint); }
+.statlabel {
+  margin-top: 34px; font-size: 34px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint);
+}
+
+/* ---------- rows / bars ---------- */
+
+.rows { display: flex; flex-direction: column; gap: 22px; margin-top: 48px; }
+
+.row {
+  display: flex; align-items: center; gap: 30px;
+  padding: 30px 40px; border-radius: 28px; background: var(--fill);
+}
+.row.hi { background: rgba(239, 68, 68, 0.10); }
+.row .k {
+  font-size: 36px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); width: 420px; flex: none;
+}
+.row.hi .k { color: var(--red-deep); }
+.row .v {
+  margin-left: auto; font-size: 60px; font-weight: 800; letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.bars { display: flex; flex-direction: column; gap: 40px; margin-top: 56px; }
+.bar .top {
+  display: flex; align-items: baseline; margin-bottom: 20px;
+}
+.bar .name {
+  font-size: 36px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.bar .amt {
+  margin-left: auto; font-size: 52px; font-weight: 800; letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.bar .rail { height: 30px; border-radius: 999px; background: var(--fill); overflow: hidden; }
+.bar .fill { height: 100%; border-radius: 999px; background: var(--ink); width: 0; }
+.bar.accent .fill { background: var(--red); }
+.bar.accent .amt { color: var(--red-deep); }
+
+/* ---------- callout ---------- */
+
+.callout {
+  margin-top: 52px; padding: 40px 44px;
+  border-left: 10px solid var(--red); background: var(--fill);
+  border-radius: 0 28px 28px 0;
+  font-size: 44px; font-weight: 600; line-height: 1.3; color: var(--ink);
+  letter-spacing: -0.015em;
+}
+
+/* ---------- art ---------- */
+
+.art { margin-top: 60px; display: flex; justify-content: center; gap: 70px; }
+.art svg { display: block; }
+
+.cta { display: flex; flex-direction: column; align-items: flex-start; }
+.cta .mark {
+  display: flex; align-items: center; gap: 26px;
+  font-size: 76px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 40px;
+}
+.cta .mark i {
+  width: 44px; height: 44px; border-radius: 999px; background: var(--red);
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.55);
+}
+.cta .where {
+  margin-top: 54px; padding: 26px 44px; border-radius: 999px;
+  border: 3px solid var(--line); color: var(--muted);
+  font-size: 34px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
