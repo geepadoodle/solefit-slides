@@ -8,8 +8,8 @@ if the tool won't, generate portrait and crop.
 After every generation, zoom in and check: screen text unchanged (every
 digit, every shoe name), Dynamic Island small (~⅓ of screen width), the big
 word spelled right and starting at the same bottom-left anchor as the other
-two posts (first letter 7% from the left edge, baseline 10% from the bottom,
-same letter size in all three — line the posts up side by side to verify),
+two posts (first letter at x = 76 px, baseline at y = 1215 px, 158 px Inter
+in all three — line the posts up side by side to verify),
 no underline under the word, no invented UI. Retyping screen text is the model's most
 common failure — if it drifts, re-run with "Keep the attached screenshot
 pixel-exact on the display. Only generate the phone body and the scene
@@ -48,12 +48,14 @@ around it."
 > the LiDAR / Face ID depth / Photos chips — same positions, same text.
 >
 > Typography: the single word "Scan" in the font Inter, ExtraBold (800)
-> weight, pure white (#FFFFFF), tight letter spacing, no underline, no
-> outline, no shadow effects beyond a soft natural drop. Placement is exact
-> and must be identical across this three-post series: the word sits in the
-> bottom-left corner, its FIRST LETTER beginning 7% in from the left edge of
-> the image, with the word's baseline 10% up from the bottom edge; cap height
-> about 12% of the image height. The word overlaps whatever it crosses (the
+> weight, set at exactly 158 px font size on this 1080×1350 canvas (cap
+> height ≈ 115 px), letter spacing −2%, pure white (#FFFFFF), no underline,
+> no outline, no shadow effects beyond a soft natural drop. Placement is
+> exact and must be identical across this three-post series: the first
+> letter's left edge at x = 76 px from the left border, the word's baseline
+> at y = 1215 px from the top (i.e. 135 px above the bottom border). If the
+> canvas is not 1080×1350, scale everything proportionally: left edge 7% of
+> width, baseline 90% of height, font size 11.7% of height. The word overlaps whatever it crosses (the
 > phone's lower edge included) and is drawn on top. No other text, no logos,
 > no watermarks, no hands.
 
@@ -93,12 +95,14 @@ actual feet beats both.
 > as positioned.
 >
 > Typography: the single word "Analyze" in the font Inter, ExtraBold (800)
-> weight, pure white (#FFFFFF), tight letter spacing, no underline, no
-> outline, no shadow effects beyond a soft natural drop. Placement is exact
-> and must be identical across this three-post series: the word sits in the
-> bottom-left corner, its FIRST LETTER beginning 7% in from the left edge of
-> the image, with the word's baseline 10% up from the bottom edge; cap height
-> about 12% of the image height. The word overlaps whatever it crosses (the
+> weight, set at exactly 158 px font size on this 1080×1350 canvas (cap
+> height ≈ 115 px), letter spacing −2%, pure white (#FFFFFF), no underline,
+> no outline, no shadow effects beyond a soft natural drop. Placement is
+> exact and must be identical across this three-post series: the first
+> letter's left edge at x = 76 px from the left border, the word's baseline
+> at y = 1215 px from the top (i.e. 135 px above the bottom border). If the
+> canvas is not 1080×1350, scale everything proportionally: left edge 7% of
+> width, baseline 90% of height, font size 11.7% of height. The word overlaps whatever it crosses (the
 > phone's lower edge included) and is drawn on top. It is a long word — keep
 > the SAME letter size as the other posts and let it run wide; never shrink
 > or move it to fit. No other text, no logos, no watermarks, no hands.
@@ -128,12 +132,14 @@ actual feet beats both.
 > bottom edge of the screen mid-scroll, keep that cut exactly.
 >
 > Typography: the single word "Choose" in the font Inter, ExtraBold (800)
-> weight, pure white (#FFFFFF), tight letter spacing, no underline, no
-> outline, no shadow effects beyond a soft natural drop. Placement is exact
-> and must be identical across this three-post series: the word sits in the
-> bottom-left corner, its FIRST LETTER beginning 7% in from the left edge of
-> the image, with the word's baseline 10% up from the bottom edge; cap height
-> about 12% of the image height. The word overlaps whatever it crosses (the
+> weight, set at exactly 158 px font size on this 1080×1350 canvas (cap
+> height ≈ 115 px), letter spacing −2%, pure white (#FFFFFF), no underline,
+> no outline, no shadow effects beyond a soft natural drop. Placement is
+> exact and must be identical across this three-post series: the first
+> letter's left edge at x = 76 px from the left border, the word's baseline
+> at y = 1215 px from the top (i.e. 135 px above the bottom border). If the
+> canvas is not 1080×1350, scale everything proportionally: left edge 7% of
+> width, baseline 90% of height, font size 11.7% of height. The word overlaps whatever it crosses (the
 > phone's lower edge included) and is drawn on top. No other text, no logos,
 > no watermarks, no hands.
 
