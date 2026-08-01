@@ -76,7 +76,7 @@ actual feet beats both.
 > as provided — do not redraw, restyle, retype, or "improve" any of it.
 > Every word, number, footprint outline, icon and layout must remain
 > pixel-identical to the attachment, including "26.6 × 9.8 cm",
-> "27.1 × 10.0 cm", the tiles ("US 10", "100 mm · D", "5 mm"), the toes-up
+> "27.1 × 10.0 cm", the tiles ("US 10", "100 mm", "5 mm"), the toes-up
 > foot outlines, and the whole "YOUR FEET · VS THE FEET DATABASE" table —
 > four gauge rows (Width, Arch, Instep, Toe box) with their teal slider
 > dots, percentile captions ("wider than 58% of scans"…) and P-values
