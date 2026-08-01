@@ -19,6 +19,6 @@ Scan → Analyze → Choose. This is step one.
 ## Alt text
 
 A phone at an angle on a dark studio floor, its screen showing the SoleFit
-scanner mid-capture: two bare feet on an oak floor seen from above, white lock
+scanner mid-capture: a first-person view down at two feet in white socks on an oak floor, white lock
 brackets around each foot, a capture ring, and LiDAR / Face ID depth / Photos
 mode chips. The word "Scan" is written large at the bottom left.

@@ -31,12 +31,12 @@ export default {
     </div>
 
     <!-- both-feet capture gate -->
-    <div class="brk" style="left:96px;top:680px;width:864px;height:1290px"></div>
-    <div class="lockpill" style="left:222px;top:1892px">LEFT&nbsp;&nbsp;✓</div>
-    <div class="lockpill" style="left:610px;top:1902px">RIGHT&nbsp;&nbsp;✓</div>
+    <div class="brk" style="left:96px;top:600px;width:864px;height:1120px"></div>
+    <div class="lockpill" style="left:230px;top:1772px">LEFT&nbsp;&nbsp;✓</div>
+    <div class="lockpill" style="left:606px;top:1782px">RIGHT&nbsp;&nbsp;✓</div>
 
     <!-- capture state -->
-    <div style="position:absolute;left:0;right:0;top:530px;display:flex;justify-content:center">
+    <div style="position:absolute;left:0;right:0;top:440px;display:flex;justify-content:center">
       <div style="background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);color:#fff;font-size:30px;font-weight:600;padding:18px 40px;border-radius:999px">
         Hold steady — capturing both feet
       </div>
@@ -100,7 +100,7 @@ Scan → Analyze → Choose. This is step one.
 ## Alt text
 
 A phone at an angle on a dark studio floor, its screen showing the SoleFit
-scanner mid-capture: two bare feet on an oak floor seen from above, white lock
+scanner mid-capture: a first-person view down at two feet in white socks on an oak floor, white lock
 brackets around each foot, a capture ring, and LiDAR / Face ID depth / Photos
 mode chips. The word "Scan" is written large at the bottom left.
 `,

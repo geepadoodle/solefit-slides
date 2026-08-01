@@ -34,12 +34,13 @@ the UI overlay; the feet must be generated fresh. Attach
 
 > The attached image defines the UI overlay ONLY. Completely replace the
 > illustrated camera view behind the UI with a photorealistic iPhone camera
-> frame: shot from chest height pointing straight down at the photographer's
-> own two feet in white crew socks, standing on an oak hardwood floor.
-> Natural perspective — shins foreshortened entering from the top of frame,
-> feet slightly splayed, soft indoor window light, gentle shadows under the
-> feet, believable fabric wrinkles and sock texture, subtle sensor grain.
-> It must look like a real photo, not a render.
+> frame: a true first-person view — the photographer holds the phone at chest
+> height pointing straight down at their OWN two feet in white crew socks on
+> an oak hardwood floor. Orientation matters: the shins enter the frame from
+> the BOTTOM edge (nearest the camera) and the toes point AWAY, toward the
+> top of the frame. Feet slightly splayed, soft indoor window light, gentle
+> shadows under the feet, believable fabric wrinkles and sock texture, subtle
+> sensor grain. It must look like a real photo, not a render.
 >
 > On top of that photo, reproduce the UI overlay from the attachment exactly:
 > status bar, "LiDAR · BOTH FEET" pill, "Hold steady — capturing both feet"
@@ -47,8 +48,9 @@ the UI overlay; the feet must be generated fresh. Attach
 > the LiDAR / Face ID depth / Photos chips — same positions, same text.
 
 If the result still looks synthetic, generate in two steps: first ask for
-just the photo ("overhead iPhone photo of my own feet in white crew socks on
-oak floor, looking straight down, natural light — realistic, no UI"), pick
+just the photo ("first-person iPhone photo looking straight down at my own
+feet in white crew socks on an oak floor — toes pointing away toward the top
+of frame, shins entering from the bottom, natural light — realistic, no UI"), pick
 the best one, then attach BOTH that photo and the screenshot: "use the first
 image as the camera view, overlay the UI from the second exactly." Smaller
 asks, better odds. The honest gold standard remains a real 5-second photo of

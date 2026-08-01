@@ -68,7 +68,7 @@ function paintFeet(canvas, seed = 7) {
     const P = [
       [0.00, -0.030],
       [0.34, -0.014], [0.50, 0.08], [0.56, 0.20],           // inner heel
-      [0.52, 0.36], [0.55, 0.52],                           // soft arch
+      [0.60, 0.36], [0.62, 0.52],                           // soft arch
       [0.74, 0.65], [0.96, 0.77],                           // big-toe ball
       [1.00, 0.86], [0.95, 0.94],                           // cap, inner corner
       [0.74, 1.000], [0.42, 1.035], [0.04, 1.040],          // cap apex (big-toe side longest)
@@ -334,11 +334,16 @@ function paintFeet(canvas, seed = 7) {
 
   /* ================= compose ================= */
 
-  drawSockFoot(300, 826, 0.11, 1000, 352, +1, 0);
-  drawSockFoot(756, 838, -0.11, 984, 344, -1, 0.04);
+  const PI = Math.PI;
+  drawSockFoot(312, 1560, PI - 0.09, 806, 356, -1, 0);
+  drawSockFoot(746, 1572, PI + 0.09, 792, 350, +1, 0.04);
 
-  drawLeg(332, -90, 918, 262, 196, 0.02);
-  drawLeg(726, -80, 928, 256, 192, -0.02);
+  ctx.save();                    // legs: local flip so they enter from below
+  ctx.translate(0, H);
+  ctx.scale(1, -1);
+  drawLeg(330, -90, H - 1602, 240, 180, -0.02);
+  drawLeg(730, -80, H - 1614, 234, 176, 0.02);
+  ctx.restore();
 
   // one warm glaze over everything so fabric, skin and floor share the light
   ctx.save();
