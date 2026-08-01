@@ -1,28 +1,15 @@
-# Nano Banana prompts — final (word stamped afterwards)
+# Nano Banana prompts — final
 
-A diffusion model cannot draw the same word at the same size three times —
-so we no longer ask it to. Gemini generates the three scenes with the
-bottom-left EMPTY; the word is stamped afterwards by a script using the real
-Inter ExtraBold font at fixed coordinates, so the type is byte-identical
-across the set.
+One generation per post: fresh chat, attach the matching `screenshot.png`,
+paste the prompt. The caption word is generated in-image (identical absolute
+spec in all three prompts — letter height one eighth of the image height,
+bottom-left corner, both gaps half a letter height). Pure black backdrop, no
+glow, no shadow.
 
-Workflow:
-1. Fresh chat per image → attach the matching `screenshot.png` → paste the
-   prompt below.
-2. Collect the three results (no words on them).
-3. Stamp the words — either send the three images back to Claude in this
-   repo ("stamp the words"), or run:
-
-   ```bash
-   cd _tools
-   node stamp-word.mjs gemini-scan.png    Scan    ../pins/01-scan/final.jpg
-   node stamp-word.mjs gemini-analyze.png Analyze ../pins/02-analyze/final.jpg
-   node stamp-word.mjs gemini-choose.png  Choose  ../pins/03-choose/final.jpg
-   ```
-
-   The script scales to any input size (158 px Inter ExtraBold at 1080×1350,
-   proportional otherwise) — identical font, size, and first-letter position
-   on all three, guaranteed.
+If the words come back inconsistent between posts, don't re-roll for
+typography — send the images back to Claude ("stamp the words") or run
+`_tools/stamp-word.mjs` to overwrite them with real Inter at fixed
+coordinates; on a pure black backdrop the patch is invisible.
 
 ---
 
@@ -33,7 +20,7 @@ Workflow:
 > pure solid black (#000000), no glow, no spotlight, no gradient, no floor,
 > no shadow, no environment of any kind; only the phone is lit. The phone
 > sits in the upper two thirds of the frame; the bottom quarter of the image
-> is pure black with nothing in it — text will be added there later.
+> is pure black, reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Treat every UI element on
 > it as a locked layer: copy the pills, brackets, LEFT/RIGHT tags, capture
@@ -43,8 +30,16 @@ Workflow:
 > white crew socks on an oak wood floor, shins entering from the bottom
 > edge, toes pointing up and away, natural light.
 >
-> No text, words, captions, logos, sparkles, stars or watermarks anywhere
-> outside the phone screen.
+> Then add the caption word "Scan" — the complete word, every letter fully
+> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Font: Inter ExtraBold, white, no underline. Size: the capital letter is
+> exactly one eighth of the image height tall. Position: bottom-left
+> corner of the image — the gap between the first letter and the left edge,
+> and the gap between the word and the bottom edge, are both equal to half a
+> letter height. Do not enlarge, shrink, or re-center the word.
+>
+> No other text, logos, sparkles, stars or watermarks anywhere outside the
+> phone screen.
 
 ---
 
@@ -55,16 +50,25 @@ Workflow:
 > completely black background — pure solid black (#000000), no glow, no
 > spotlight, no gradient, no floor, no shadow, no environment of any kind;
 > only the phone is lit. The phone sits in the upper two thirds of the
-> frame; the bottom quarter of the image is pure black with nothing in it —
-> text will be added there later.
+> frame; the bottom quarter of the image is pure black, reserved for the
+> caption word.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every number, label, gauge bar,
 > outline and word keeps its position, wording and spelling. Do not retype,
 > redraw or "clean up" anything on the screen.
 >
-> No text, words, captions, logos, sparkles, stars or watermarks anywhere
-> outside the phone screen.
+> Then add the caption word "Analyze" — the complete word, every letter fully
+> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Font: Inter ExtraBold, white, no underline. Size: the capital letter is
+> exactly one eighth of the image height tall — it is a longer
+> word, so at that fixed letter height it simply runs wider. Position: bottom-left
+> corner of the image — the gap between the first letter and the left edge,
+> and the gap between the word and the bottom edge, are both equal to half a
+> letter height. Do not enlarge, shrink, or re-center the word.
+>
+> No other text, logos, sparkles, stars or watermarks anywhere outside the
+> phone screen.
 
 ---
 
@@ -75,7 +79,7 @@ Workflow:
 > pure solid black (#000000), no glow, no spotlight, no gradient, no floor,
 > no shadow, no environment of any kind; only the phone is lit. The phone
 > sits in the upper two thirds of the frame; the bottom quarter of the image
-> is pure black with nothing in it — text will be added there later.
+> is pure black, reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every shoe name, brand line,
@@ -83,20 +87,29 @@ Workflow:
 > spelling. Do not retype, redraw or "clean up" anything on the screen. The
 > list is cut off by the bottom of the screen — keep that cut.
 >
-> No text, words, captions, logos, sparkles, stars or watermarks anywhere
-> outside the phone screen.
+> Then add the caption word "Choose" — the complete word, every letter fully
+> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Font: Inter ExtraBold, white, no underline. Size: the capital letter is
+> exactly one eighth of the image height tall. Position: bottom-left
+> corner of the image — the gap between the first letter and the left edge,
+> and the gap between the word and the bottom edge, are both equal to half a
+> letter height. Do not enlarge, shrink, or re-center the word.
+>
+> No other text, logos, sparkles, stars or watermarks anywhere outside the
+> phone screen.
 
 ---
 
 ## Checking a Gemini result (30 seconds each)
 
-1. Bottom quarter empty — no word, no sparkle/star glyph, nothing.
+1. The word: complete, in front of everything, bottom-left corner, letter
+   height ~1/8 of image height, no underline, no sparkle/star glyph.
 2. Screen text matches the attached screenshot — brand lines (NIKE not MIKE,
    JORDAN not JERDAN), "½ size up", "US 10", the fit percentages.
 3. Dynamic Island small, about a third of the screen width.
 
-Anything off → fresh chat, same prompt, re-roll. Then stamp the words
-(workflow above) — typography is never a reason to re-roll again.
+Screen problems → fresh chat, same prompt, re-roll. Word problems → keep
+the image and stamp instead (intro above).
 
 ## Posting
 
