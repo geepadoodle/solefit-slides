@@ -63,15 +63,15 @@ html, body {
     0 30px 50px -10px rgba(0,0,0,0.6);
 }
 
-/* side buttons */
-.device i {
+/* side buttons — direct children only; screens nest their own <i> elements */
+.device > i {
   position: absolute; background: linear-gradient(90deg, #3C3C44, #17171B);
   border-radius: 5px;
 }
-.device i.power { right: -5px; top: 300px; width: 7px; height: 128px; }
-.device i.volu  { left: -5px;  top: 250px; width: 7px; height: 76px; }
-.device i.vold  { left: -5px;  top: 344px; width: 7px; height: 76px; }
-.device i.mute  { left: -5px;  top: 168px; width: 7px; height: 44px; }
+.device > i.power { right: -5px; top: 300px; width: 7px; height: 128px; }
+.device > i.volu  { left: -5px;  top: 250px; width: 7px; height: 76px; }
+.device > i.vold  { left: -5px;  top: 344px; width: 7px; height: 76px; }
+.device > i.mute  { left: -5px;  top: 168px; width: 7px; height: 44px; }
 
 .screen {
   position: absolute; inset: 16px;
@@ -90,14 +90,14 @@ html, body {
 }
 
 .island {
-  position: absolute; left: 50%; top: 30px; z-index: 40;
-  width: 250px; height: 74px; margin-left: -125px;
+  position: absolute; left: 50%; top: 15px; z-index: 40;
+  width: 170px; height: 50px; margin-left: -85px;
   border-radius: 999px; background: #000;
 }
 .island::after {                              /* camera glint */
-  content: ""; position: absolute; right: 22px; top: 50%;
-  width: 24px; height: 24px; margin-top: -12px; border-radius: 999px;
-  background: radial-gradient(circle at 35% 35%, #3A4A66 0%, #0A0C12 70%);
+  content: ""; position: absolute; right: 12px; top: 50%;
+  width: 17px; height: 17px; margin-top: -8.5px; border-radius: 999px;
+  background: radial-gradient(circle at 35% 35%, #2E3C55 0%, #0A0C12 72%);
 }
 
 /* screen glass: diagonal glare */
@@ -160,3 +160,27 @@ html, body {
 .navrow .icon { font-size: 38px; color: #6B6B70; }
 
 .bigtitle { padding: 10px 48px 0; font-size: 64px; font-weight: 800; letter-spacing: -0.03em; }
+
+
+/* ---------- SoleFit tab bar (floating capsule) ---------- */
+
+.tabbar {
+  position: absolute; left: 48px; right: 48px; bottom: 70px;
+  display: flex; align-items: stretch;
+  background: #fff; border: 2px solid #E6E6E9; border-radius: 999px;
+  padding: 12px 0; box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+}
+.tabbar .col {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.tabbar .slot { height: 84px; display: flex; align-items: center; justify-content: center; }
+.tabbar .slot .pill {
+  display: flex; align-items: center; justify-content: center;
+  width: 108px; height: 68px; border-radius: 999px; background: #F2F2F4;
+}
+.tabbar .lbl { font-size: 21px; font-weight: 600; color: #8A8A8F; }
+.tabbar .lbl.on { color: #111113; }
+.homebar {
+  position: absolute; left: 50%; bottom: 18px; width: 270px; height: 10px;
+  margin-left: -135px; border-radius: 999px; background: #111113; opacity: 0.9;
+}

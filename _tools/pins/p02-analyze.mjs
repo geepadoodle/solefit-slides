@@ -3,8 +3,8 @@ export default {
   slug: "02-analyze",
   word: "Analyze",
   wedge: "none",
-  device: { rx: "3deg", ry: "-8deg", rz: "2deg", tx: "56px", ty: "-6px" },
-  contact: { bottom: "148px", shift: "36px" },
+  device: { rx: "3deg", ry: "-8deg", rz: "2deg", tx: "56px", ty: "-64px" },
+  contact: { bottom: "196px", shift: "36px" },
 
   screen: `
     <div class="statusbar">
@@ -16,14 +16,17 @@ export default {
       </span>
     </div>
 
-    <div class="navrow" style="margin-top:96px;padding-left:56px;padding-right:56px">
-      <span class="back">‹</span>
-      <span class="title" style="font-size:40px">Scan report</span>
+    <div class="navrow" style="position:relative;margin-top:96px;padding-left:56px;padding-right:56px">
+      <span class="back" style="display:flex;align-items:center;gap:10px">
+        <svg width="24" height="42" viewBox="0 0 12 21"><path d="M10 1.5 2 10.5l8 9" fill="none" stroke="#111113" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:34px">Scans</span>
+      </span>
       <span class="spacer"></span>
+      <span class="title" style="font-size:36px;position:absolute;left:0;right:0;text-align:center;pointer-events:none">Scan report</span>
       <svg class="icon" width="38" height="46" viewBox="0 0 17 21"><g fill="none" stroke="#6B6B70" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 1v12M4.5 4.5 8.5 1l4 3.5"/><path d="M2.5 9.5H1.5v10h14v-10h-1"/></g></svg>
     </div>
 
-    <div style="padding:28px 44px 0">
+    <div style="padding:24px 44px 0">
       <div style="background:#fff;border:2px solid #E6E6E9;border-radius:48px;padding:52px 52px 44px">
 
         <div style="display:flex;justify-content:space-between;align-items:baseline">
@@ -87,9 +90,21 @@ export default {
       </div>
     </div>
 
-    <div style="position:absolute;left:44px;right:44px;bottom:430px">
-      <div style="background:#111113;color:#fff;border-radius:999px;padding:36px 0;text-align:center;font-size:34px;font-weight:700">Set as active scan</div>
+    <div class="tabbar">
+      <div class="col">
+        <div class="slot"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M12 2.6 2.5 10.5V21h6.6v-6h5.8v6h6.6V10.5Z" fill="#8A8A8F"/></svg></div>
+        <div class="lbl">For You</div>
+      </div>
+      <div class="col">
+        <div class="slot"><svg width="58" height="58" viewBox="0 0 24 24"><g fill="none" stroke="#8A8A8F" stroke-width="2.4" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></g></svg></div>
+        <div class="lbl">Scan</div>
+      </div>
+      <div class="col">
+        <div class="slot"><div class="pill"><svg width="40" height="40" viewBox="0 0 24 24"><g fill="#111113"><circle cx="12" cy="7.2" r="4.2"/><path d="M3.6 21c.4-4.2 3.9-7 8.4-7s8 2.8 8.4 7Z"/></g></svg></div></div>
+        <div class="lbl on">Profile</div>
+      </div>
     </div>
+    <div class="homebar"></div>
 
     <script>
       // Same dorsal outline the scanner paints, traced at report scale.

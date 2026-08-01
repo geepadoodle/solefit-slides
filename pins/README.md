@@ -22,13 +22,17 @@ grid read **Scan → Analyze → Choose** left-to-right:
 
 ## Notes
 
-- The scanner's feet are painted (original artwork, no stock license) —
-  deterministic canvas in `_tools/paint-feet.js`, same pixels every build.
-- The Analyze outlines are the same dorsal geometry the scanner paints, so the
-  two posts visibly agree.
-- The Choose thumbnails are the app's real grayscale catalog placeholders, and
-  every number obeys the app's actual fit ramp (88+ green "Perfect/Great",
-  74–88 "Great/Good") with real seed-catalog names and prices.
+- The screens mirror the app's real SwiftUI, not a loose imitation: Choose is
+  `BestFitView`'s sheet (Close / "Best for your feet", category chips,
+  Brand + Sort menu rows, rank numerals, and the real `FitBadge` — colored dot
+  + "94% fit" in ink); Analyze is the scan-report card over the app's floating
+  capsule tab bar (For You · Scan · Profile); Scan is the capture flow with its
+  LiDAR / Face ID depth / Photos switcher.
+- The scanner shows feet in socks — matching the app's own guidance ("bare
+  feet or thin socks") — painted deterministically in `_tools/paint-feet.js`;
+  original artwork, no stock license.
+- Thumbnails are the app's real grayscale catalog placeholders; names, prices
+  and every score follow the seed catalog and the actual fit ramp.
 - Rebuild after editing `_tools/pins/*.mjs`:
 
 ```bash

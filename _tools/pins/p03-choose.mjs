@@ -1,4 +1,6 @@
-// Pin 3 — "Choose": the catalog ranked by fit for these feet.
+// Pin 3 — "Choose": BestFitView as the app actually renders it — sheet chrome
+// ("Close" / inline title), category chips, Brand + Sort menu rows, ranked rows
+// with the real FitBadge (colored dot + "94% fit" in ink).
 export default {
   slug: "03-choose",
   word: "Choose",
@@ -16,58 +18,80 @@ export default {
       </span>
     </div>
 
-    <div class="bigtitle" style="padding-top:120px">Best fit</div>
-    <div style="font-size:26px;color:#6B6B70;padding:8px 48px 0">Every shoe, rated for your scan</div>
-
-    <div style="display:flex;gap:16px;padding:30px 48px 6px">
-      <span class="chip on">Best fit</span>
-      <span class="chip">Worst fit</span>
-      <span class="chip">Price ↓</span>
-      <span class="chip">Running</span>
+    <!-- sheet nav: Close · inline title -->
+    <div style="display:flex;align-items:center;margin-top:100px;padding:0 48px;height:88px">
+      <span style="font-size:34px;color:#111113;width:220px">Close</span>
+      <span style="flex:1;text-align:center;font-size:34px;font-weight:600">Best for your feet</span>
+      <span style="width:220px"></span>
     </div>
 
-    <div id="rows" style="display:flex;flex-direction:column;gap:20px;padding:26px 40px 0"></div>
+    <!-- category chips -->
+    <div style="display:flex;gap:16px;padding:20px 32px 0;overflow:hidden">
+      <span class="chip on">All</span>
+      <span class="chip">Running</span>
+      <span class="chip">Basketball</span>
+      <span class="chip">Lifestyle</span>
+      <span class="chip">Skate</span>
+      <span class="chip">Trail</span>
+    </div>
 
-    <div style="font-size:22px;color:#8A8A8F;padding:26px 48px 0">Sizes shown are for the bigger foot — your right.</div>
+    <!-- Brand / Sort menu rows -->
+    <div style="display:flex;align-items:center;padding:28px 32px 0">
+      <span style="font-size:30px;color:#6B6B70">Brand</span>
+      <span style="margin-left:auto;display:flex;align-items:center;gap:8px;font-size:30px;font-weight:600;color:#111113">All brands
+        <svg width="20" height="26" viewBox="0 0 10 13"><path d="M5 1 8 4.6H2L5 1Zm0 11L2 8.4h6L5 12Z" fill="#111113"/></svg>
+      </span>
+    </div>
+    <div style="display:flex;align-items:center;padding:18px 32px 0">
+      <span style="font-size:30px;color:#6B6B70">Sort</span>
+      <span style="margin-left:auto;display:flex;align-items:center;gap:8px;font-size:30px;font-weight:600;color:#111113">Best fit
+        <svg width="20" height="26" viewBox="0 0 10 13"><path d="M5 1 8 4.6H2L5 1Zm0 11L2 8.4h6L5 12Z" fill="#111113"/></svg>
+      </span>
+    </div>
+
+    <div id="rows" style="display:flex;flex-direction:column;gap:20px;padding:30px 32px 0"></div>
+
+    <div class="homebar"></div>
 
     <style>
-      .chip { font-size:26px;font-weight:600;color:#6B6B70;background:#F2F2F4;border-radius:999px;padding:14px 30px; }
-      .chip.on { background:#111113;color:#fff;font-weight:700; }
-      .row { display:flex;align-items:center;gap:28px;background:#fff;border:2px solid #E6E6E9;border-radius:36px;padding:24px 34px 24px 24px; }
-      .thumb { position:relative;width:150px;height:150px;border-radius:24px;background:#fff;flex:none;overflow:hidden;border:2px solid #F2F2F4; }
-      .thumb img { width:100%;height:100%;object-fit:cover;filter:grayscale(1); }
-      .rank { position:absolute;left:-2px;top:-2px;width:50px;height:50px;border-radius:24px 0 24px 0;background:#111113;color:#fff;
-              font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center; }
-      .nm { font-size:33px;font-weight:700;letter-spacing:-0.01em; }
-      .sub { font-size:26px;color:#6B6B70;margin-top:6px; }
-      .size { font-size:26px;color:#111113;font-weight:600;margin-top:6px; }
-      .pct { margin-left:auto;text-align:right;flex:none; }
-      .pct b { font-size:50px;font-weight:800;letter-spacing:-0.03em;display:block; }
-      .pct span { font-size:24px;font-weight:700;letter-spacing:0.06em; }
+      .chip { font-size:27px;font-weight:600;color:#6B6B70;background:#F2F2F4;border-radius:999px;padding:14px 30px;white-space:nowrap; }
+      .chip.on { background:#111113;color:#fff; }
+      .row { display:flex;align-items:center;gap:24px;background:#fff;border:2px solid #E6E6E9;border-radius:34px;padding:30px 30px; }
+      .rank { width:46px;flex:none;text-align:center;font-size:38px;font-weight:700;color:#8A8A8F;font-variant-numeric:tabular-nums; }
+      .rank.top { color:#111113; }
+      .thumb { width:152px;height:118px;border-radius:20px;background:#fff;border:2px solid #F2F2F4;flex:none;overflow:hidden;display:flex;align-items:center;justify-content:center; }
+      .thumb img { width:92%;height:92%;object-fit:contain;filter:grayscale(1); }
+      .brand { font-size:22px;font-weight:800;letter-spacing:0.08em;color:#6B6B70; }
+      .nm { font-size:33px;font-weight:700;letter-spacing:-0.01em;margin-top:3px; }
+      .size { font-size:26px;font-weight:600;color:#6B6B70;margin-top:5px; }
+      .size.up { color:#B45309; }
+      .fitbadge { margin-left:auto;flex:none;display:flex;align-items:center;gap:20px;
+                  background:rgba(242,242,244,0.92);border:1.5px solid rgba(230,230,233,0.9);
+                  border-radius:999px;padding:14px 28px; }
+      .fitbadge i { width:12px;height:12px;border-radius:999px;flex:none; }
+      .fitbadge b { font-size:27px;font-weight:700;color:#111113;white-space:nowrap;letter-spacing:0.01em; }
     </style>
     <script>
       const shoes = [
-        { n:"Pegasus 41",        s:"Nike · $140",        img:"assets/running.jpg",   size:"US 10",   pct:94, rank:1 },
-        { n:"Ultraboost Light",  s:"Adidas · $190",      img:"assets/running.jpg",   size:"US 10",   pct:91, rank:2 },
-        { n:"Air Jordan 1 High OG", s:"Jordan · $180",   img:"assets/lifestyle.jpg", size:"US 10.5", pct:89, rank:3 },
-        { n:"Clifton 9",         s:"Hoka · $145",        img:"assets/running.jpg",   size:"US 10",   pct:88 },
-        { n:"Dunk Low",          s:"Nike · $115",        img:"assets/skate.jpg",     size:"US 10",   pct:86 },
-        { n:"990v6",             s:"New Balance · $200", img:"assets/lifestyle.jpg", size:"US 10 2E", pct:84 },
-        { n:"Samba OG",          s:"Adidas · $100",      img:"assets/lifestyle.jpg", size:"US 10.5", pct:76 },
+        { n:"Pegasus 41",       b:"NIKE",        img:"assets/running.jpg",   size:"Your size: US 10",        pct:94, rank:1 },
+        { n:"Ultraboost Light", b:"ADIDAS",      img:"assets/running.jpg",   size:"Your size: US 10",        pct:91, rank:2 },
+        { n:"Air Jordan 1 High OG", b:"JORDAN",  img:"assets/lifestyle.jpg", size:"½ size up · US 10.5", up:1, pct:89, rank:3 },
+        { n:"Clifton 9",        b:"HOKA",        img:"assets/running.jpg",   size:"Your size: US 10",        pct:88 },
+        { n:"Dunk Low",         b:"NIKE",        img:"assets/skate.jpg",     size:"Your size: US 10",        pct:86 },
+        { n:"990v6",            b:"NEW BALANCE", img:"assets/lifestyle.jpg", size:"Your size: US 10 (2E)",   pct:84 },
+        { n:"Samba OG",         b:"ADIDAS",      img:"assets/lifestyle.jpg", size:"½ size up · US 10.5", up:1, pct:76 },
       ];
       const fitColor = p => p >= 88 ? "#15803D" : p >= 74 ? "#3F7F14" : p >= 58 ? "#B45309" : "#DC2626";
-      const fitLabel = p => p >= 90 ? "Perfect fit" : p >= 80 ? "Great fit" : p >= 68 ? "Good fit" : "Okay fit";
       document.getElementById("rows").innerHTML = shoes.map(x => \`
         <div class="row">
-          <div class="thumb"><img src="\${x.img}">\${x.rank ? \`<div class="rank">\${x.rank}</div>\` : ""}</div>
+          <div class="rank \${x.rank === 1 ? "top" : ""}">\${x.rank ?? ""}</div>
+          <div class="thumb"><img src="\${x.img}"></div>
           <div>
+            <div class="brand">\${x.b}</div>
             <div class="nm">\${x.n}</div>
-            <div class="sub">\${x.s}</div>
-            <div class="size">Your size · \${x.size}</div>
+            <div class="size \${x.up ? "up" : ""}">\${x.size}</div>
           </div>
-          <div class="pct" style="color:\${fitColor(x.pct)}">
-            <b>\${x.pct}%</b><span>\${fitLabel(x.pct)}</span>
-          </div>
+          <div class="fitbadge"><i style="background:\${fitColor(x.pct)}"></i><b>\${x.pct}% fit</b></div>
         </div>\`).join("");
     </script>`,
 
@@ -94,10 +118,10 @@ Scan → Analyze → Choose. Step three: buy once, keep them.
 
 ## Alt text
 
-A phone leaning on a dark studio floor showing SoleFit's "Best fit" list:
-shoes ranked for one person's scan — Pegasus 41 at 94% perfect fit in US 10,
-Ultraboost Light 91%, Air Jordan 1 at 89% in US 10.5, Dunk Low 86%, 990v6 84%
-in a 2E width, Samba OG 76% — each with a grayscale product photo, price, and
-the size to buy. The word "Choose" is written large at the bottom left.
+A phone leaning on a dark studio floor showing SoleFit's "Best for your feet"
+ranking: shoes scored for one person's scan — Pegasus 41 at 94% fit in US 10,
+Ultraboost Light 91%, Air Jordan 1 at 89% needing a half size up, Clifton 9,
+Dunk Low, a 990v6 in a 2E width, Samba OG — each with a product photo and a
+fit-percentage badge. The word "Choose" is written large at the bottom left.
 `,
 };

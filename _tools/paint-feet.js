@@ -1,6 +1,7 @@
-/* Paints the scanner viewfinder: two bare feet seen from above on an oak floor,
-   photographic enough to read as a camera frame at Instagram size. Pure canvas,
-   seeded PRNG — same pixels every build. Canvas is 1056 x 2312. */
+/* Paints the scanner viewfinder: two feet in white crew socks on an oak floor,
+   seen from above — matches the app's own guidance ("bare feet or thin socks,
+   hard floor"). Pure canvas, seeded PRNG — same pixels every build.
+   Canvas is 1056 x 2312. */
 
 function paintFeet(canvas, seed = 7) {
   const W = canvas.width, H = canvas.height;
@@ -55,25 +56,29 @@ function paintFeet(canvas, seed = 7) {
     }
   }
 
-  /* ================= foot geometry =================
-     Local coords: origin at heel-center, +v down toward the toes.
-     Authored for the LEFT foot (inner edge / big toe on +u = screen-right);
-     mir=-1 mirrors for the right foot. fw is FULL ball width; u is a fraction
-     of fw/2. fl is heel -> toe-base length; toes extend past it. */
+  /* ================= sock geometry =================
+     Local coords: origin at heel-center, +v down toward the toes. Authored for
+     the LEFT foot (big-toe side on +u); mir=-1 mirrors. fl runs heel -> sock
+     tip; fw is full ball width. Fabric rounds everything: one smooth cap
+     instead of toes, a softer arch, a slightly puffy edge. */
 
-  function silhouette(fl, fw, mir, jit) {
+  const jitterTable = Array.from({ length: 24 }, () => rnd() * 2 - 1);
+
+  function sockOutline(fl, fw, mir, jit) {
     const P = [
-      [0.00, -0.040],
-      [0.32, -0.018], [0.47, 0.09], [0.55, 0.21],          // inner heel
-      [0.50, 0.36], [0.52, 0.52],                          // arch cut
-      [0.70, 0.66], [0.94, 0.78], [1.00, 0.88], [0.92, 0.965], // big-toe ball
-      [0.50, 1.000], [0.00, 0.995], [-0.50, 0.965],        // toe-base line
-      [-0.86, 0.905], [-1.00, 0.80], [-0.94, 0.675],       // pinky ball
-      [-0.80, 0.50], [-0.72, 0.32],                        // outer waist
-      [-0.52, 0.14], [-0.34, -0.016],
+      [0.00, -0.030],
+      [0.34, -0.014], [0.50, 0.08], [0.56, 0.20],           // inner heel
+      [0.52, 0.36], [0.55, 0.52],                           // soft arch
+      [0.74, 0.65], [0.96, 0.77],                           // big-toe ball
+      [1.00, 0.86], [0.95, 0.94],                           // cap, inner corner
+      [0.74, 1.000], [0.42, 1.035], [0.04, 1.040],          // cap apex (big-toe side longest)
+      [-0.36, 1.015], [-0.70, 0.960], [-0.92, 0.885],       // cap, outer corner
+      [-1.00, 0.79], [-0.94, 0.665],                        // pinky ball
+      [-0.80, 0.49], [-0.72, 0.31],                         // outer waist
+      [-0.52, 0.12], [-0.32, -0.010],
     ];
     return P.map(([u, v], i) => [
-      mir * (u + (jit ? (jitterTable[(i + jit) % jitterTable.length] * 0.030) : 0)) * fw * 0.5,
+      mir * (u + jitterTable[(i + jit) % jitterTable.length] * 0.022) * fw * 0.5,
       v * fl,
     ]);
   }
@@ -89,182 +94,164 @@ function paintFeet(canvas, seed = 7) {
     ctx.closePath();
   }
 
-  // Short stubby toes that OVERLAP the toe-base line (start inside the foot).
-  function toeSet(fl, fw, mir) {
-    const T = [
-      { u:  0.58, v: 0.960, l: 0.132, w: 0.50, nail: 0.55 },
-      { u:  0.26, v: 0.985, l: 0.098, w: 0.29, nail: 0.36 },
-      { u:  0.00, v: 0.985, l: 0.088, w: 0.27, nail: 0 },
-      { u: -0.25, v: 0.965, l: 0.076, w: 0.24, nail: 0 },
-      { u: -0.47, v: 0.938, l: 0.060, w: 0.22, nail: 0 },
-    ];
-    return T.map(t => ({
-      ...t,
-      x: mir * t.u * fw * 0.5,
-      y: t.v * fl,                    // where the toe emerges from the foot
-      l: t.l * fl,                    // visible length past that point
-      w: t.w * fw * 0.5 * 0.5,        // half-width of the toe
-    }));
-  }
-
-  const jitterTable = Array.from({ length: 24 }, () => rnd() * 2 - 1);
-
-  function drawFoot(cx, cy, ang, fl, fw, mir, exposure) {
+  function drawSockFoot(cx, cy, ang, fl, fw, mir, exposure) {
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(ang);
 
-    const sil = silhouette(fl, fw, mir, mir > 0 ? 3 : 11);
-    const toes = toeSet(fl, fw, mir);
-    const tilt = t => mir * t.u * 0.22;      // toes fan slightly
-
-    const toePath = t => {
-      // capsule from just inside the foot to the tip
-      ctx.moveTo(t.x + t.w, t.y + t.l * 0.25);
-      ctx.ellipse(t.x, t.y + t.l * 0.25, t.w, t.l * 0.75, tilt(t), 0, 7);
-    };
+    const sil = sockOutline(fl, fw, mir, mir > 0 ? 3 : 11);
 
     // ---- contact shadow
     ctx.save();
-    ctx.filter = "blur(20px)";
-    ctx.fillStyle = "rgba(40,24,14,0.5)";
-    smoothPath(sil.map(([u, v]) => [u * 1.12, v * 1.012 + 10]));
+    ctx.filter = "blur(22px)";
+    ctx.fillStyle = "rgba(38,23,13,0.52)";
+    smoothPath(sil.map(([u, v]) => [u * 1.10, v * 1.012 + 12]));
     ctx.fill();
-    for (const t of toes) {
-      ctx.beginPath();
-      ctx.ellipse(t.x * 1.04, t.y + t.l * 0.45 + 8, t.w * 1.5, t.l * 0.75, 0, 0, 7);
-      ctx.fill();
-    }
     ctx.restore();
 
-    // ---- base skin
-    const skinBase = ctx.createLinearGradient(0, 0, 0, fl * 1.15);
-    skinBase.addColorStop(0, "#B98F6F");
-    skinBase.addColorStop(0.35, "#C69C7B");
-    skinBase.addColorStop(0.8, "#CEA283");
-    skinBase.addColorStop(1, "#C19272");
-    ctx.fillStyle = skinBase;
-    smoothPath(sil); ctx.fill();
-    for (const t of toes) { ctx.beginPath(); toePath(t); ctx.fill(); }
+    // ---- fabric base
+    const base = ctx.createLinearGradient(0, 0, 0, fl * 1.05);
+    base.addColorStop(0, "#DFDBD4");
+    base.addColorStop(0.4, "#EAE7E1");
+    base.addColorStop(0.85, "#F0EDE8");
+    base.addColorStop(1, "#E4E0D9");
+    ctx.fillStyle = base;
+    smoothPath(sil);
+    ctx.fill();
 
-    // ---- clip for shading
+    // ---- clipped shading
     ctx.save();
     smoothPath(sil);
-    for (const t of toes) toePath(t);
     ctx.clip();
 
-    // skin mottle: irregular tone so it doesn't read as plastic
-    for (let i = 0; i < 46; i++) {
+    // fabric mottle
+    for (let i = 0; i < 40; i++) {
       const mx = (rnd() * 2 - 1) * fw * 0.6, my = rnd() * fl * 1.05;
-      const mr = 14 + rnd() * 44;
+      const mr = 16 + rnd() * 46;
       ctx.fillStyle = rnd() < 0.5
-        ? `rgba(178,120,88,${0.02 + rnd() * 0.03})`
-        : `rgba(238,206,174,${0.02 + rnd() * 0.03})`;
+        ? `rgba(168,161,150,${0.02 + rnd() * 0.028})`
+        : `rgba(255,254,250,${0.03 + rnd() * 0.03})`;
       ctx.beginPath(); ctx.ellipse(mx, my, mr, mr * (0.5 + rnd()), rnd() * 3, 0, 7); ctx.fill();
     }
 
-    // dorsal ridge light: instep -> big toe
+    // dorsal highlight down the instep ridge
     const ridge = ctx.createRadialGradient(
-      mir * fw * 0.10, fl * 0.44, 10, mir * fw * 0.10, fl * 0.47, fl * 0.58);
-    ridge.addColorStop(0, "rgba(240,205,170,0.40)");
-    ridge.addColorStop(0.55, "rgba(240,205,170,0.15)");
-    ridge.addColorStop(1, "rgba(240,205,170,0)");
+      mir * fw * 0.08, fl * 0.45, 10, mir * fw * 0.08, fl * 0.48, fl * 0.6);
+    ridge.addColorStop(0, "rgba(255,254,250,0.5)");
+    ridge.addColorStop(0.55, "rgba(255,254,250,0.16)");
+    ridge.addColorStop(1, "rgba(255,254,250,0)");
     ctx.fillStyle = ridge;
-    ctx.fillRect(-fw, -fl * 0.1, fw * 2, fl * 1.3);
+    ctx.fillRect(-fw, -fl * 0.1, fw * 2, fl * 1.25);
 
-    // lateral falloff
+    // lateral falloff away from the light
     const fall = ctx.createLinearGradient(mir * fw * 0.5, 0, mir * -fw * 0.55, 0);
-    fall.addColorStop(0, "rgba(126,84,58,0)");
-    fall.addColorStop(0.6, "rgba(126,84,58,0.07)");
-    fall.addColorStop(1, "rgba(114,74,50,0.30)");
+    fall.addColorStop(0, "rgba(150,143,132,0)");
+    fall.addColorStop(0.6, "rgba(150,143,132,0.10)");
+    fall.addColorStop(1, "rgba(134,127,116,0.34)");
     ctx.fillStyle = fall;
-    ctx.fillRect(-fw, -fl * 0.1, fw * 2, fl * 1.3);
+    ctx.fillRect(-fw, -fl * 0.1, fw * 2, fl * 1.25);
 
     // edge occlusion
     ctx.save();
-    ctx.filter = "blur(8px)";
-    ctx.strokeStyle = "rgba(118,76,50,0.42)";
-    ctx.lineWidth = 10;
-    smoothPath(sil); ctx.stroke();
-    for (const t of toes) { ctx.beginPath(); toePath(t); ctx.stroke(); }
+    ctx.filter = "blur(9px)";
+    ctx.strokeStyle = "rgba(140,132,120,0.5)";
+    ctx.lineWidth = 12;
+    smoothPath(sil);
+    ctx.stroke();
     ctx.restore();
 
-    // extensor tendons to toes 1-4
+    // knit wales: fine lines running the length of the foot, bowing with the form
     ctx.save();
-    ctx.filter = "blur(3px)";
-    for (let i = 0; i < 4; i++) {
-      const t = toes[i];
-      ctx.strokeStyle = `rgba(234,199,164,${0.14 - i * 0.026})`;
-      ctx.lineWidth = 6.5 - i * 1.1;
+    ctx.filter = "blur(0.6px)";
+    for (let i = -9; i <= 9; i++) {
+      const u0 = i / 10;
+      ctx.strokeStyle = i % 2
+        ? `rgba(154,147,136,${0.055 + 0.02 * rnd()})`
+        : `rgba(252,251,247,${0.05 + 0.02 * rnd()})`;
+      ctx.lineWidth = 1.6;
       ctx.beginPath();
-      ctx.moveTo(mir * fw * 0.02, fl * 0.18);
-      ctx.quadraticCurveTo(t.x * 0.5, fl * 0.64, t.x * 0.95, t.y);
+      for (let v = -0.02; v <= 1.02; v += 0.04) {
+        // wales spread over the ball, gather at heel and cap
+        const spread = 0.62 + 0.42 * Math.sin(Math.PI * Math.min(1, Math.max(0, v / 0.86)));
+        const x = mir * u0 * spread * fw * 0.5;
+        const y = v * fl;
+        v <= -0.019 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
       ctx.stroke();
     }
     ctx.restore();
 
-    // shadow wedges between toe bases
+    // toe ridges under the fabric — where the big toe and toe row push up
     ctx.save();
-    ctx.filter = "blur(3px)";
-    ctx.fillStyle = "rgba(104,64,42,0.35)";
-    for (let i = 0; i < toes.length - 1; i++) {
-      const a = toes[i], b = toes[i + 1];
-      const gx = (a.x + b.x) / 2, gy = (a.y + b.y) / 2 + Math.min(a.l, b.l) * 0.12;
+    ctx.filter = "blur(6px)";
+    ctx.strokeStyle = "rgba(146,138,126,0.30)";
+    ctx.lineWidth = 5;
+    ctx.beginPath();       // crease along the inside of the big toe
+    ctx.moveTo(mir * fw * 0.19, fl * 0.87);
+    ctx.quadraticCurveTo(mir * fw * 0.16, fl * 0.95, mir * fw * 0.10, fl * 1.005);
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(146,138,126,0.20)";
+    ctx.beginPath();       // fainter second-toe hint
+    ctx.moveTo(mir * -fw * 0.06, fl * 0.93);
+    ctx.quadraticCurveTo(mir * -fw * 0.08, fl * 0.985, mir * -fw * 0.10, fl * 1.015);
+    ctx.stroke();
+    // knuckle bump highlight on the big toe
+    ctx.fillStyle = "rgba(255,254,250,0.30)";
+    ctx.beginPath();
+    ctx.ellipse(mir * fw * 0.30, fl * 0.90, fw * 0.13, fl * 0.055, mir * 0.3, 0, 7);
+    ctx.fill();
+    ctx.restore();
+
+    // toe seam: stitch line arcing over the cap
+    ctx.save();
+    ctx.filter = "blur(1.2px)";
+    ctx.strokeStyle = "rgba(148,140,128,0.5)";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(mir * fw * 0.44, fl * 0.905);
+    ctx.quadraticCurveTo(mir * fw * 0.06, fl * 0.985, mir * -fw * 0.40, fl * 0.905);
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(255,254,250,0.4)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(mir * fw * 0.43, fl * 0.916);
+    ctx.quadraticCurveTo(mir * fw * 0.06, fl * 0.996, mir * -fw * 0.39, fl * 0.916);
+    ctx.stroke();
+    ctx.restore();
+
+    // instep wrinkles: fabric gathers in front of the ankle
+    ctx.save();
+    ctx.filter = "blur(4px)";
+    for (const [v, a] of [[0.20, 0.20], [0.30, 0.15], [0.41, 0.10]]) {
+      ctx.strokeStyle = `rgba(140,132,120,${a})`;
+      ctx.lineWidth = 6;
       ctx.beginPath();
-      ctx.ellipse(gx, gy, 5, Math.min(a.l, b.l) * 0.34, 0, 0, 7);
-      ctx.fill();
+      ctx.moveTo(mir * -fw * 0.30, fl * (v + 0.015));
+      ctx.quadraticCurveTo(0, fl * (v - 0.022), mir * fw * 0.32, fl * (v + 0.012));
+      ctx.stroke();
+      ctx.strokeStyle = `rgba(255,254,250,${a * 1.15})`;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(mir * -fw * 0.28, fl * (v + 0.035));
+      ctx.quadraticCurveTo(0, fl * (v - 0.002), mir * fw * 0.30, fl * (v + 0.032));
+      ctx.stroke();
     }
     ctx.restore();
 
-    // per-toe modelling: separation crescent, knuckle, warm tip
-    for (const t of toes) {
-      ctx.save();
-      ctx.filter = "blur(2px)";
-      ctx.strokeStyle = "rgba(108,68,46,0.35)";
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.ellipse(t.x, t.y + t.l * 0.25, t.w * 1.0, t.l * 0.73, tilt(t), Math.PI * 0.75, Math.PI * 1.6);
-      ctx.stroke();
-      ctx.restore();
-      ctx.fillStyle = "rgba(150,100,70,0.16)";
-      ctx.beginPath();
-      ctx.ellipse(t.x, t.y + t.l * 0.12, t.w * 0.6, t.l * 0.16, 0, 0, 7);
-      ctx.fill();
-      ctx.save();
-      ctx.filter = "blur(5px)";
-      ctx.fillStyle = "rgba(186,102,76,0.20)";
-      ctx.beginPath();
-      ctx.ellipse(t.x, t.y + t.l * 0.78, t.w * 0.8, t.l * 0.30, 0, 0, 7);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    // nails: big + second toe, near the tip
-    for (const t of toes.filter(t => t.nail)) {
-      const nw = t.w * t.nail, nl = t.l * 0.30, ny = t.y + t.l * 0.66;
-      ctx.fillStyle = "rgba(233,203,176,0.75)";
-      ctx.beginPath(); ctx.ellipse(t.x, ny, nw, nl, tilt(t), 0, 7); ctx.fill();
-      ctx.strokeStyle = "rgba(156,108,80,0.45)";
-      ctx.lineWidth = 1.8;
-      ctx.stroke();
-      ctx.fillStyle = "rgba(255,246,234,0.45)";
-      ctx.beginPath();
-      ctx.ellipse(t.x - nw * 0.25 * mir, ny - nl * 0.3, nw * 0.34, nl * 0.3, -0.3 * mir, 0, 7);
-      ctx.fill();
-    }
-
-    if (exposure) { ctx.fillStyle = `rgba(56,36,22,${exposure})`; ctx.fillRect(-fw, -fl * 0.2, fw * 2, fl * 1.5); }
+    if (exposure) { ctx.fillStyle = `rgba(60,52,40,${exposure})`; ctx.fillRect(-fw, -fl * 0.1, fw * 2, fl * 1.3); }
 
     ctx.restore();   // unclip
     ctx.restore();   // untransform
   }
 
-  /* ---- shin/ankle, drawn over the hindfoot ---- */
+  /* ---- leg (skin) + ribbed sock cuff over the ankle ---- */
 
-  function drawShin(cx, topY, ankleY, wTop, wAnkle, lean) {
+  function drawLeg(cx, topY, cuffY, wTop, wCuff, lean) {
     ctx.save();
     ctx.translate(cx, 0);
     ctx.rotate(lean);
+
+    // shin skin from off-frame down into the cuff
     const lg = ctx.createLinearGradient(-wTop / 2, 0, wTop / 2, 0);
     lg.addColorStop(0, "#8D6244");
     lg.addColorStop(0.2, "#B08262");
@@ -273,23 +260,14 @@ function paintFeet(canvas, seed = 7) {
     lg.addColorStop(1, "#7F573C");
     ctx.fillStyle = lg;
     ctx.beginPath();
-    ctx.moveTo(-wTop / 2, topY - 30);
-    ctx.bezierCurveTo(-wTop / 2 - 6, topY + (ankleY - topY) * 0.55,
-                      -wAnkle / 2 - 10, ankleY - 70, -wAnkle / 2, ankleY);
-    ctx.quadraticCurveTo(0, ankleY + 40, wAnkle / 2, ankleY);
-    ctx.bezierCurveTo(wAnkle / 2 + 10, ankleY - 70,
-                      wTop / 2 + 6, topY + (ankleY - topY) * 0.55, wTop / 2, topY - 30);
+    ctx.moveTo(-wTop / 2, topY);
+    ctx.bezierCurveTo(-wTop / 2 - 6, topY + (cuffY - topY) * 0.55,
+                      -wCuff / 2 - 4, cuffY - 80, -wCuff / 2 + 6, cuffY + 8);
+    ctx.lineTo(wCuff / 2 - 6, cuffY + 8);
+    ctx.bezierCurveTo(wCuff / 2 + 4, cuffY - 80,
+                      wTop / 2 + 6, topY + (cuffY - topY) * 0.55, wTop / 2, topY);
     ctx.closePath();
     ctx.fill();
-
-    // ankle crease shadow blending into the foot
-    ctx.save();
-    ctx.filter = "blur(9px)";
-    ctx.fillStyle = "rgba(110,70,46,0.4)";
-    ctx.beginPath();
-    ctx.ellipse(0, ankleY + 26, wAnkle * 0.62, 24, 0, 0, 7);
-    ctx.fill();
-    ctx.restore();
 
     // shin bone highlight
     ctx.save();
@@ -297,36 +275,75 @@ function paintFeet(canvas, seed = 7) {
     ctx.strokeStyle = "rgba(240,208,176,0.38)";
     ctx.lineWidth = 15;
     ctx.beginPath();
-    ctx.moveTo(-wTop * 0.05, topY);
-    ctx.quadraticCurveTo(-wTop * 0.02, (topY + ankleY) / 2, 0, ankleY - 34);
+    ctx.moveTo(-wTop * 0.05, topY + 10);
+    ctx.quadraticCurveTo(-wTop * 0.02, (topY + cuffY) / 2, 0, cuffY - 40);
     ctx.stroke();
     ctx.restore();
 
-    // malleolus: soft interior bumps
-    for (const sx of [-1, 1]) {
-      ctx.save();
-      ctx.filter = "blur(6px)";
-      ctx.fillStyle = "rgba(238,206,176,0.28)";
-      ctx.beginPath();
-      ctx.ellipse(sx * wAnkle * 0.30, ankleY - 34, 18, 24, 0, 0, 7);
-      ctx.fill();
-      ctx.restore();
+    // ---- ribbed cuff
+    const ch = 150;                      // cuff height
+    const cw = wCuff + 52;               // cuff wraps wider than the leg
+    const cy0 = cuffY - ch;
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.roundRect(-cw / 2, cy0, cw, ch, [34, 34, 44, 44]);
+    const cg = ctx.createLinearGradient(-cw / 2, 0, cw / 2, 0);
+    cg.addColorStop(0, "#CFCAC1");
+    cg.addColorStop(0.28, "#EFECE7");
+    cg.addColorStop(0.55, "#F4F2EE");
+    cg.addColorStop(0.8, "#E2DED7");
+    cg.addColorStop(1, "#C4BFB5");
+    ctx.fillStyle = cg;
+    ctx.fill();
+    ctx.clip();
+
+    // vertical ribs
+    for (let x = -cw / 2 + 6; x < cw / 2; x += 11) {
+      ctx.fillStyle = "rgba(150,143,132,0.30)";
+      ctx.fillRect(x, cy0, 3.4, ch);
+      ctx.fillStyle = "rgba(255,254,250,0.5)";
+      ctx.fillRect(x + 3.4, cy0, 2.4, ch);
     }
+    // cuff top fold shadow + rolled edge
+    ctx.fillStyle = "rgba(120,113,102,0.30)";
+    ctx.fillRect(-cw / 2, cy0, cw, 14);
+    ctx.fillStyle = "rgba(255,254,250,0.55)";
+    ctx.fillRect(-cw / 2, cy0 + 14, cw, 8);
+    // skin shadow cast into the cuff opening
+    ctx.save();
+    ctx.filter = "blur(8px)";
+    ctx.fillStyle = "rgba(96,74,54,0.28)";
+    ctx.beginPath();
+    ctx.ellipse(0, cy0 + 8, wCuff * 0.4, 16, 0, 0, 7);
+    ctx.fill();
+    ctx.restore();
+    ctx.restore();
+
+    // cuff casts a soft shadow onto the sock below it
+    ctx.save();
+    ctx.filter = "blur(10px)";
+    ctx.fillStyle = "rgba(120,112,100,0.30)";
+    ctx.beginPath();
+    ctx.ellipse(0, cuffY + 16, cw * 0.42, 20, 0, 0, 7);
+    ctx.fill();
+    ctx.restore();
+
     ctx.restore();
   }
 
   /* ================= compose ================= */
 
-  drawFoot(300, 826, 0.11, 906, 338, +1, 0);
-  drawFoot(756, 838, -0.11, 892, 332, -1, 0.04);
+  drawSockFoot(300, 826, 0.11, 1000, 352, +1, 0);
+  drawSockFoot(756, 838, -0.11, 984, 344, -1, 0.04);
 
-  drawShin(332, -90, 934, 262, 186, 0.02);
-  drawShin(726, -80, 944, 256, 182, -0.02);
+  drawLeg(332, -90, 918, 262, 196, 0.02);
+  drawLeg(726, -80, 928, 256, 192, -0.02);
 
-  // one warm glaze over everything so skin and floor share the light
+  // one warm glaze over everything so fabric, skin and floor share the light
   ctx.save();
   ctx.globalCompositeOperation = "multiply";
-  ctx.fillStyle = "rgba(255,205,162,0.06)";
+  ctx.fillStyle = "rgba(255,205,162,0.05)";
   ctx.fillRect(0, 0, W, H);
   ctx.restore();
 
@@ -357,7 +374,6 @@ function paintFeet(canvas, seed = 7) {
   ctx.fillStyle = ctx.createPattern(tile, "repeat");
   ctx.fillRect(0, 0, W, H);
   ctx.restore();
-
   ctx.save();
   ctx.globalCompositeOperation = "soft-light";
   ctx.fillStyle = ctx.createPattern(tile, "repeat");
