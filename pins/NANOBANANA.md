@@ -76,7 +76,8 @@ actual feet beats both.
 > as provided — do not redraw, restyle, retype, or "improve" any of it.
 > Every word, number, footprint outline, icon and layout must remain
 > pixel-identical to the attachment, including "26.6 × 9.8 cm",
-> "27.1 × 10.0 cm", "US 10", "D · std" and "5 mm".
+> "27.1 × 10.0 cm", the metric tiles ("US 10", "100 mm · D", "5 mm",
+> "High", "63 mm", "Tapered") and the toes-up foot outlines.
 >
 > Typography on the post: one large white word, "Analyze", bold geometric
 > sans (like Inter ExtraBold), bottom-left, underlined, partially overlapping
@@ -101,8 +102,10 @@ actual feet beats both.
 > The attached image is the phone's screen. Place it on the display exactly
 > as provided — do not redraw, restyle, retype, or "improve" any of it.
 > Every shoe name (Pegasus 41, Ultraboost Light, Air Jordan 1 High OG,
-> Clifton 9, Dunk Low, 990v6, Samba OG), every "% fit" badge, every size
-> line and the chip row must remain pixel-identical to the attachment.
+> Clifton 9, Dunk Low, 990v6, Samba OG, Blazer Mid '77), the row numbers
+> 1 through 8, every "% fit" badge, every size line and the chip row must
+> remain pixel-identical to the attachment — the list runs past the bottom
+> of the screen, keep that.
 >
 > Typography on the post: one large white word, "Choose", bold geometric
 > sans (like Inter ExtraBold), bottom-left, underlined, partially overlapping

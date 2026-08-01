@@ -21,7 +21,8 @@ Scan → Analyze → Choose. Step three: buy once, keep them.
 ## Alt text
 
 A phone leaning on a dark studio floor showing SoleFit's "Best for your feet"
-ranking: shoes scored for one person's scan — Pegasus 41 at 94% fit in US 10,
-Ultraboost Light 91%, Air Jordan 1 at 89% needing a half size up, Clifton 9,
-Dunk Low, a 990v6 in a 2E width, Samba OG — each with a product photo and a
+ranking: a numbered list of shoes scored for one person's scan — 1 Pegasus 41
+at 94% fit, 2 Ultraboost Light 91%, 3 Air Jordan 1 89% needing a half size up,
+4 Clifton 9, 5 Dunk Low, 6 990v6 in a 2E width, 7 Samba OG, with row 8 cut off
+by the bottom of the screen mid-scroll — each with a product photo and a
 fit-percentage badge. The word "Choose" is written large at the bottom left.

@@ -27,14 +27,14 @@ export default {
     </div>
 
     <div style="padding:24px 44px 0">
-      <div style="background:#fff;border:2px solid #E6E6E9;border-radius:48px;padding:52px 52px 44px">
+      <div style="background:#fff;border:2px solid #E6E6E9;border-radius:48px;padding:44px 48px 38px">
 
         <div style="display:flex;justify-content:space-between;align-items:baseline">
           <span style="font-size:27px;font-weight:800;letter-spacing:0.18em;color:#6B6B70">SCAN REPORT</span>
           <span style="font-size:27px;color:#8A8A8F">Jul 31, 9:41&nbsp;PM</span>
         </div>
 
-        <div style="display:flex;gap:28px;margin-top:44px;align-items:flex-start">
+        <div style="display:flex;gap:28px;margin-top:36px;align-items:flex-start">
           <svg width="60" height="60" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="#15803D"/><path d="m7.5 13.5 3.5 3.5 7-7.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
             <div style="font-size:46px;font-weight:700;letter-spacing:-0.02em">Clean capture</div>
@@ -42,37 +42,40 @@ export default {
           </div>
         </div>
 
-        <div style="display:flex;gap:44px;margin-top:52px">
+        <div style="display:flex;gap:44px;margin-top:40px">
           <div style="flex:1;text-align:center">
             <div style="font-size:25px;font-weight:800;letter-spacing:0.16em;color:#6B6B70">LEFT</div>
-            <canvas id="fL" width="300" height="470" style="width:300px;height:470px;margin:16px 0 4px"></canvas>
+            <canvas id="fL" width="300" height="420" style="width:300px;height:420px;margin:12px 0 2px"></canvas>
             <div style="font-size:37px;font-weight:700">26.6 × 9.8 cm</div>
             <div style="font-size:25px;color:#8A8A8F;margin-top:6px">266×98·61 mm</div>
           </div>
           <div style="flex:1;text-align:center">
             <div style="font-size:25px;font-weight:800;letter-spacing:0.16em;color:#6B6B70">RIGHT</div>
-            <canvas id="fR" width="300" height="470" style="width:300px;height:470px;margin:16px 0 4px"></canvas>
+            <canvas id="fR" width="300" height="420" style="width:300px;height:420px;margin:12px 0 2px"></canvas>
             <div style="font-size:37px;font-weight:700">27.1 × 10.0 cm</div>
             <div style="font-size:25px;color:#8A8A8F;margin-top:6px">271×100·63 mm</div>
           </div>
         </div>
 
-        <div style="display:flex;gap:24px;margin-top:56px">
-          <div style="flex:1.12;background:#F2F2F4;border-radius:30px;padding:30px 32px">
-            <div style="font-size:23px;font-weight:800;letter-spacing:0.14em;color:#6B6B70">YOUR SIZE</div>
-            <div style="font-size:48px;font-weight:800;margin-top:10px">US 10</div>
-          </div>
-          <div style="flex:1;background:#F2F2F4;border-radius:30px;padding:30px 32px">
-            <div style="font-size:23px;font-weight:800;letter-spacing:0.14em;color:#6B6B70">WIDTH</div>
-            <div style="font-size:48px;font-weight:800;margin-top:10px">D&thinsp;·&thinsp;std</div>
-          </div>
-          <div style="flex:1.3;background:rgba(180,83,9,0.10);border-radius:30px;padding:30px 32px">
-            <div style="font-size:23px;font-weight:800;letter-spacing:0.14em;color:#B45309">ASYMMETRY</div>
-            <div style="font-size:48px;font-weight:800;margin-top:10px;color:#B45309">5&nbsp;mm</div>
-          </div>
+        <div style="display:flex;gap:20px;margin-top:44px">
+          <div class="tile"><div class="tl">YOUR SIZE</div><div class="tv">US 10</div></div>
+          <div class="tile"><div class="tl">WIDTH</div><div class="tv">100&nbsp;mm&thinsp;·&thinsp;D</div></div>
+          <div class="tile warn"><div class="tl">ASYMMETRY</div><div class="tv">5&nbsp;mm</div></div>
         </div>
+        <div style="display:flex;gap:20px;margin-top:20px">
+          <div class="tile"><div class="tl">ARCH</div><div class="tv">High</div></div>
+          <div class="tile"><div class="tl">INSTEP</div><div class="tv">63&nbsp;mm</div></div>
+          <div class="tile"><div class="tl">TOE BOX</div><div class="tv">Tapered</div></div>
+        </div>
+        <style>
+          .tile { flex:1; background:#F2F2F4; border-radius:28px; padding:26px 30px; }
+          .tile.warn { background:rgba(180,83,9,0.10); }
+          .tile.warn .tl, .tile.warn .tv { color:#B45309; }
+          .tl { font-size:22px; font-weight:800; letter-spacing:0.13em; color:#6B6B70; }
+          .tv { font-size:42px; font-weight:800; margin-top:9px; white-space:nowrap; }
+        </style>
 
-        <div style="height:2px;background:#E6E6E9;margin:48px 0 38px"></div>
+        <div style="height:2px;background:#E6E6E9;margin:38px 0 30px"></div>
 
         <div style="display:flex;flex-direction:column;gap:24px">
           <div style="display:flex;gap:20px;align-items:baseline">
@@ -85,7 +88,7 @@ export default {
           </div>
         </div>
 
-        <div style="height:2px;background:#E6E6E9;margin:40px 0 30px"></div>
+        <div style="height:2px;background:#E6E6E9;margin:32px 0 24px"></div>
         <div style="font-size:24px;color:#8A8A8F">LiDAR scan · quality 0.92 · both feet, one session</div>
       </div>
     </div>
@@ -115,6 +118,8 @@ export default {
         const toes = [[0.58,0.96,0.132,0.5],[0.26,0.985,0.098,0.29],[0,0.985,0.088,0.27],
                       [-0.25,0.965,0.076,0.24],[-0.47,0.938,0.06,0.22]];
         const c = document.getElementById(id), ctx = c.getContext("2d");
+        ctx.translate(0, c.height);   // toes up — same orientation as the scan
+        ctx.scale(1, -1);
         const cx = c.width/2, cy = 30;
         const pts = P.map(([u,v]) => [cx + mir*u*fw/2, cy + v*fl]);
         ctx.lineJoin = ctx.lineCap = "round";
@@ -132,8 +137,8 @@ export default {
         ctx.fillStyle = "#F2F2F4"; ctx.fill();
         ctx.strokeStyle = "#111113"; ctx.lineWidth = 3.4; ctx.stroke();
       }
-      reportFoot("fL", 1, 380, 158);
-      reportFoot("fR", -1, 390, 162);
+      reportFoot("fL", 1, 340, 142);
+      reportFoot("fR", -1, 349, 146);
     </script>`,
 
   caption: `
@@ -159,9 +164,9 @@ Scan → Analyze → Choose. This is step two.
 ## Alt text
 
 A phone on a dark studio backdrop showing a SoleFit scan report: a green
-"Clean capture" verdict, two traced foot outlines with measurements — left
-26.6 by 9.8 cm, right 27.1 by 10 cm — size US 10, width D standard, a 5 mm
-asymmetry flag, and advice to size to the right foot. The word "Analyze" is
-written large at the bottom left.
+"Clean capture" verdict, two traced toes-up foot outlines with measurements —
+left 26.6 by 9.8 cm, right 27.1 by 10 cm — and a metrics grid: size US 10,
+width 100 mm D, a 5 mm asymmetry flag, high arch, 63 mm instep, tapered toe
+box. The word "Analyze" is written large at the bottom left.
 `,
 };

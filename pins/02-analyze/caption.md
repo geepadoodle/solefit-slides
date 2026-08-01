@@ -20,7 +20,7 @@ Scan → Analyze → Choose. This is step two.
 ## Alt text
 
 A phone on a dark studio backdrop showing a SoleFit scan report: a green
-"Clean capture" verdict, two traced foot outlines with measurements — left
-26.6 by 9.8 cm, right 27.1 by 10 cm — size US 10, width D standard, a 5 mm
-asymmetry flag, and advice to size to the right foot. The word "Analyze" is
-written large at the bottom left.
+"Clean capture" verdict, two traced toes-up foot outlines with measurements —
+left 26.6 by 9.8 cm, right 27.1 by 10 cm — and a metrics grid: size US 10,
+width 100 mm D, a 5 mm asymmetry flag, high arch, 63 mm instep, tapered toe
+box. The word "Analyze" is written large at the bottom left.
