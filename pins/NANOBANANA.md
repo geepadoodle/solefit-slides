@@ -29,10 +29,11 @@ Workflow:
 ## Prompt 1 — Scan  (attach `01-scan/screenshot.png`)
 
 > Generate an image: a 1080×1350 Instagram post background. A titanium
-> iPhone 15 Pro floats at a slight tilt in a dark charcoal photo studio with
-> a soft glow behind it and a deep shadow below it. The phone sits in the
-> upper two thirds of the frame; the bottom quarter of the image is empty
-> dark backdrop with nothing in it — text will be added there later.
+> iPhone 15 Pro floats at a slight tilt on a completely black background —
+> pure solid black (#000000), no glow, no spotlight, no gradient, no floor,
+> no shadow, no environment of any kind; only the phone is lit. The phone
+> sits in the upper two thirds of the frame; the bottom quarter of the image
+> is pure black with nothing in it — text will be added there later.
 >
 > The attached screenshot is the phone's screen. Treat every UI element on
 > it as a locked layer: copy the pills, brackets, LEFT/RIGHT tags, capture
@@ -50,11 +51,12 @@ Workflow:
 ## Prompt 2 — Analyze  (attach `02-analyze/screenshot.png`)
 
 > Generate an image: a 1080×1350 Instagram post background. A titanium
-> iPhone 15 Pro stands almost upright, centered, in a dark charcoal photo
-> studio with a soft spotlight glow behind it and a deep shadow below it.
-> The phone sits in the upper two thirds of the frame; the bottom quarter of
-> the image is empty dark backdrop with nothing in it — text will be added
-> there later.
+> iPhone 15 Pro stands almost upright, centered, angled just slightly, on a
+> completely black background — pure solid black (#000000), no glow, no
+> spotlight, no gradient, no floor, no shadow, no environment of any kind;
+> only the phone is lit. The phone sits in the upper two thirds of the
+> frame; the bottom quarter of the image is pure black with nothing in it —
+> text will be added there later.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every number, label, gauge bar,
@@ -69,11 +71,11 @@ Workflow:
 ## Prompt 3 — Choose  (attach `03-choose/screenshot.png`)
 
 > Generate an image: a 1080×1350 Instagram post background. A titanium
-> iPhone 15 Pro leans at a slight angle in a dark charcoal photo studio with
-> a soft glow behind it, a deep shadow below it, and a faint diagonal floor
-> split in the lower right. The phone sits in the upper two thirds of the
-> frame; the bottom quarter of the image is empty dark backdrop with nothing
-> in it — text will be added there later.
+> iPhone 15 Pro leans at a slight angle on a completely black background —
+> pure solid black (#000000), no glow, no spotlight, no gradient, no floor,
+> no shadow, no environment of any kind; only the phone is lit. The phone
+> sits in the upper two thirds of the frame; the bottom quarter of the image
+> is pure black with nothing in it — text will be added there later.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every shoe name, brand line,
