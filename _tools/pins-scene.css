@@ -143,11 +143,12 @@ html, body {
 .statusbar {
   position: relative; z-index: 30;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 44px 74px 0 90px;
-  font-size: 34px; font-weight: 600;
+  padding: 40px 76px 0 108px;
+  font-size: 50px; font-weight: 600; letter-spacing: -0.01em;
 }
-.statusbar .right { display: flex; gap: 14px; align-items: center; }
-.statusbar svg { display: block; }
+.statusbar .right { display: flex; gap: 18px; align-items: center; }
+.statusbar svg { display: block; width: auto; height: 38px; }
+.statusbar svg:last-child { height: 40px; }
 .statusbar.lite, .statusbar.lite svg { color: #fff; fill: #fff; }
 
 .navrow {

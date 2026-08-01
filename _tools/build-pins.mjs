@@ -53,7 +53,6 @@ for (const spec of specs) {
     <div class="glass"></div>
   </div>
 </div>
-<div class="brandchip"><i></i>SoleFit</div>
 <div class="word">${spec.word}</div>
 </body></html>`;
 
