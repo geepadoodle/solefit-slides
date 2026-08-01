@@ -1,85 +1,101 @@
-# Generating the pinned posts with Nano Banana
+# Nano Banana prompts — final
 
-Three generations, one screenshot each. Attach the `screenshot.png` from the
-matching pin folder and paste the prompt — nothing else. Keep prompts SHORT:
-long spec-heavy prompts flip Gemini into describing/analyzing the image
-instead of generating. Lead with the edit command, keep it under ~120 words,
-and escalate with the add-on lines only if a specific thing goes wrong.
+One generation per post. Open a FRESH chat each time, attach the matching
+`screenshot.png`, paste the prompt, nothing else. The screen-protection line
+is baked in (retyped screen text was the failure in round one), the word spec
+is identical in all three, and decorations are banned (round one added a
+sparkle glyph).
+
+If a result still has mangled screen text, don't argue with it in-thread —
+fresh chat, same prompt, re-roll. And whatever comes back, the typography can
+be normalized deterministically afterwards (see the last section).
 
 ---
 
 ## Prompt 1 — Scan  (attach `01-scan/screenshot.png`)
 
-> Edit this image into a 1080×1350 Instagram post. Show this phone screen on
-> a titanium iPhone 15 Pro floating at a slight tilt in a dark charcoal
-> photo studio, soft glow behind it, deep shadow under it. Replace only the
-> camera view behind the UI with a realistic photo: looking straight down at
-> your own feet in white crew socks on an oak wood floor, shins entering
-> from the bottom of the screen, toes pointing up and away. Keep every UI
-> element (pills, brackets, chips, ring) exactly where it is. Add one big
-> white word "Scan" in Inter ExtraBold, 158 px, no underline, bottom-left —
-> first letter 7% from the left edge, baseline 10% above the bottom. Nothing
-> else in the frame.
+> Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
+> floats at a slight tilt in a dark charcoal photo studio with a soft glow
+> behind it and a deep shadow below it.
+>
+> The attached screenshot is the phone's screen. Treat every UI element on it
+> as a locked layer: copy the pills, brackets, LEFT/RIGHT tags, capture ring,
+> chips and status bar exactly — position, wording and spelling — without
+> retyping or redrawing them. Replace ONLY the camera view behind that UI
+> with a realistic photo: looking straight down at your own feet in white
+> crew socks on an oak wood floor, shins entering from the bottom edge, toes
+> pointing up and away, natural light.
+>
+> Then add exactly one graphic element on top: the word "Scan" in the font
+> Inter ExtraBold, white, 158 px tall on this canvas, no underline, its first
+> letter starting 76 px from the left edge with its baseline 135 px above the
+> bottom edge. Same size and position as the other posts in this series.
+> Nothing else — no sparkles, stars, logos, watermarks or extra text
+> anywhere.
 
 ---
 
 ## Prompt 2 — Analyze  (attach `02-analyze/screenshot.png`)
 
-> Edit this image into a 1080×1350 Instagram post. Show this phone screen,
-> completely unchanged, on a titanium iPhone 15 Pro standing almost upright
-> in a dark charcoal photo studio, soft spotlight glow behind it, deep
-> shadow under it. Do not redraw or retype anything on the screen. Add one
-> big white word "Analyze" in Inter ExtraBold, 158 px, no underline,
-> bottom-left — first letter 7% from the left edge, baseline 10% above the
-> bottom, same letter size as the other posts in this series. Nothing else
-> in the frame.
+> Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
+> stands almost upright, centered, in a dark charcoal photo studio with a
+> soft spotlight glow behind it and a deep shadow below it.
+>
+> The attached screenshot is the phone's screen. Treat it as a locked layer:
+> place it on the display exactly as it is — every number, label, gauge bar,
+> outline and word keeps its position, wording and spelling. Do not retype,
+> redraw or "clean up" anything on the screen.
+>
+> Then add exactly one graphic element on top: the word "Analyze" in the font
+> Inter ExtraBold, white, 158 px tall on this canvas, no underline, its first
+> letter starting 76 px from the left edge with its baseline 135 px above the
+> bottom edge. Same size and position as the other posts in this series — it
+> is a long word, let it run wide, never shrink it. Nothing else — no
+> sparkles, stars, logos, watermarks or extra text anywhere.
 
 ---
 
 ## Prompt 3 — Choose  (attach `03-choose/screenshot.png`)
 
-> Edit this image into a 1080×1350 Instagram post. Show this phone screen,
-> completely unchanged, on a titanium iPhone 15 Pro leaning at a slight
-> angle in a dark charcoal photo studio, soft glow behind it, deep shadow
-> under it, a faint diagonal floor split in the lower-right. Do not redraw
-> or retype anything on the screen — the list is cut off at the bottom,
-> keep that. Add one big white word "Choose" in Inter ExtraBold, 158 px, no
-> underline, bottom-left — first letter 7% from the left edge, baseline 10%
-> above the bottom. Nothing else in the frame.
+> Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
+> leans at a slight angle in a dark charcoal photo studio with a soft glow
+> behind it, a deep shadow below it, and a faint diagonal floor split in the
+> lower right.
+>
+> The attached screenshot is the phone's screen. Treat it as a locked layer:
+> place it on the display exactly as it is — every shoe name, brand line,
+> row number, size line and fit badge keeps its position, wording and
+> spelling. Do not retype, redraw or "clean up" anything on the screen. The
+> list is cut off by the bottom of the screen — keep that cut.
+>
+> Then add exactly one graphic element on top: the word "Choose" in the font
+> Inter ExtraBold, white, 158 px tall on this canvas, no underline, its first
+> letter starting 76 px from the left edge with its baseline 135 px above the
+> bottom edge. Same size and position as the other posts in this series.
+> Nothing else — no sparkles, stars, logos, watermarks or extra text
+> anywhere.
 
 ---
 
-## If something specific goes wrong, add ONE of these lines and re-run
+## Checking a result (30 seconds each)
 
-- Screen text got retyped or mangled:
-  "The screen must stay pixel-identical to the attached image — generate
-  only the phone body, scene and word."
-- Word in the wrong place or wrong size:
-  "The word starts at x=76 px, baseline y=1215 px, 158 px Inter ExtraBold,
-  on the 1080×1350 canvas."
-- Dynamic Island too big:
-  "The Dynamic Island is small — about one third of the screen width."
-- Feet look fake (prompt 1):
-  "The camera view must look like a real iPhone photo, not a render — real
-  sock fabric, real wood grain, natural light."
-- Model still only analyzes instead of generating:
-  start the prompt with "Generate an image:" — and send the prompt and the
-  attachment in the SAME message, with no other conversation before it.
+1. Read the screen against the attached screenshot — brand lines (NIKE, not
+   MIKE; JORDAN, not JERDAN), "½ size up", "US 10", the fit percentages.
+2. The word: white, no underline, starts at the same corner spot as the other
+   two, same letter size (Analyze must not be bigger).
+3. No sparkle/star glyph anywhere.
+4. Dynamic Island small, about a third of the screen width.
 
-## Two-step fallback for the Scan feet
+Bad screen text → fresh chat, same prompt, re-roll. Bad word only → keep the
+image and normalize the type instead (below).
 
-Generate the photo alone first: "Photo looking straight down at my own feet
-in white crew socks on an oak floor, toes pointing away, shins entering from
-the bottom, natural light, no UI." Then attach that photo AND the
-screenshot: "Put the first image behind the UI of the second, keep all UI
-exactly." A real 5-second photo of actual feet beats both.
+## Type normalization (the deterministic fix)
 
-## Capturing real screenshots instead (better input when possible)
-
-- **Choose**: the "Best for your feet" ranking, in the simulator (⌘S saves a PNG).
-- **Analyze**: Profile → scan history → a scan report.
-- **Scan**: needs a real device (the simulator has no camera) — which also
-  gets you real feet in the viewfinder, no replacement step needed.
+The words sit on flat dark backdrop in every layout, so they can be patched
+without touching the rest: erase the generated word, stamp the real Inter
+ExtraBold at 158 px, x=76, baseline y=1215 — identical across all three.
+Send the finals back to Claude in this repo and ask for "type normalization";
+it's scripted, not generated, so it's exact.
 
 ## Posting
 
