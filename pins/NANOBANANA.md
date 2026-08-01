@@ -4,20 +4,22 @@ Four requirements, and one of them can't come from the model:
 
 - **Black background** — in the prompts.
 - **Photorealistic phone + screen** — in the prompts.
-- **Same font, size and position for the word in all three** — NOT possible
-  from three independent generations. The prompts therefore leave the
-  bottom-left empty, and the word is stamped afterwards with the real
-  Inter Bold file at fixed coordinates. On a pure black backdrop the
-  stamp is seamless.
+- **Same font, size and position for the word in all three** — the prompts
+  all carry the identical word spec (Inter SemiBold, cap height one eighth
+  of the image height, bottom-left, half-letter-height gaps). Three separate
+  generations still won't match to the pixel, so if they come back uneven,
+  don't re-roll: send them back and the word gets restamped with the real
+  Inter SemiBold file at fixed coordinates — seamless on pure black.
 
 ## Workflow
 
 1. Fresh chat per post → attach the matching `screenshot.png` → paste the
-   prompt. You get three photoreal, word-less images.
-2. Send those three back to Claude in this repo: **"stamp the words"**.
+   prompt. You get three photoreal posts.
+2. If the words came out uneven between posts, send the three back to Claude
+   in this repo: **"stamp the words"**.
    (Or run it yourself: `cd _tools && node stamp-word.mjs <image> Scan
-   ../pins/01-scan/final.jpg`, etc. — add `--weight 600` for lighter or
-   `--weight 800` for heavier.)
+   ../pins/01-scan/final.jpg`, etc. — add `--weight 700` for Bold or
+   `--weight 800` for ExtraBold.)
 3. Three finished posts with byte-identical typography.
 
 ---
@@ -37,7 +39,7 @@ Four requirements, and one of them can't come from the model:
 > photo taken by a product photographer.
 >
 > The phone occupies the upper two thirds of the frame. The bottom quarter of
-> the image is pure flat black, completely empty.
+> the image is pure flat black, reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Keep every UI element on it
 > exactly as it is — the status bar, the "LiDAR · BOTH FEET" pill, the "Hold
@@ -59,8 +61,17 @@ Four requirements, and one of them can't come from the model:
 > drawn or illustrated, discard it entirely and generate a real photograph in
 > its place.
 >
-> No text, words, captions, logos, sparkles, stars or watermarks anywhere
-> outside the phone screen. The bottom quarter stays empty black.
+> Then add the caption word "Scan" — the complete word, every letter fully
+> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Font: Inter SemiBold (weight 600 — medium weight, NOT bold or heavy),
+> white, no underline. Size: the capital letter is exactly one eighth of the
+> image height tall. Position: bottom-left corner of the image — the gap
+> between the first letter and the left edge, and the gap between the word
+> and the bottom edge, are both equal to half a letter height. Do not
+> enlarge, shrink, or re-center the word.
+>
+> No other text, logos, sparkles, stars or watermarks anywhere outside the
+> phone screen.
 
 ---
 
@@ -80,7 +91,7 @@ Four requirements, and one of them can't come from the model:
 > photo taken by a product photographer.
 >
 > The phone occupies the upper two thirds of the frame. The bottom quarter of
-> the image is pure flat black, completely empty.
+> the image is pure flat black, reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Place it on the display
 > exactly as it is — every number, label, gauge bar, foot outline and word
@@ -89,8 +100,18 @@ Four requirements, and one of them can't come from the model:
 > sits under glass with a subtle reflection, and the white interface casts no
 > light onto the black background.
 >
-> No text, words, captions, logos, sparkles, stars or watermarks anywhere
-> outside the phone screen. The bottom quarter stays empty black.
+> Then add the caption word "Analyze" — the complete word, every letter fully
+> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Font: Inter SemiBold (weight 600 — medium weight, NOT bold or heavy),
+> white, no underline. Size: the capital letter is exactly one eighth of the
+> image height tall — it is a longer word, so at
+> that fixed letter height it simply runs wider. Position: bottom-left corner of the image — the gap
+> between the first letter and the left edge, and the gap between the word
+> and the bottom edge, are both equal to half a letter height. Do not
+> enlarge, shrink, or re-center the word.
+>
+> No other text, logos, sparkles, stars or watermarks anywhere outside the
+> phone screen.
 
 ---
 
@@ -109,7 +130,7 @@ Four requirements, and one of them can't come from the model:
 > photo taken by a product photographer.
 >
 > The phone occupies the upper two thirds of the frame. The bottom quarter of
-> the image is pure flat black, completely empty.
+> the image is pure flat black, reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Place it on the display
 > exactly as it is — every shoe name, brand line, row number, size line and
@@ -118,14 +139,24 @@ Four requirements, and one of them can't come from the model:
 > the screen — keep that cut. The screen is emissive: it glows faintly and
 > sits under glass with a subtle reflection.
 >
-> No text, words, captions, logos, sparkles, stars or watermarks anywhere
-> outside the phone screen. The bottom quarter stays empty black.
+> Then add the caption word "Choose" — the complete word, every letter fully
+> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Font: Inter SemiBold (weight 600 — medium weight, NOT bold or heavy),
+> white, no underline. Size: the capital letter is exactly one eighth of the
+> image height tall. Position: bottom-left corner of the image — the gap
+> between the first letter and the left edge, and the gap between the word
+> and the bottom edge, are both equal to half a letter height. Do not
+> enlarge, shrink, or re-center the word.
+>
+> No other text, logos, sparkles, stars or watermarks anywhere outside the
+> phone screen.
 
 ---
 
 ## Checking a result
 
-1. Bottom quarter completely empty — no word, no sparkle/star glyph.
+1. The word: complete, bottom-left, medium weight (not heavy), same letter
+   height across all three, no underline, no sparkle/star glyph.
 2. Background truly black, no glow or shadow.
 3. Screen text matches the attachment — brand lines (NIKE not MIKE, JORDAN
    not JERDAN), "½ size up", "US 10", the fit percentages.

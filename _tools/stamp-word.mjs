@@ -4,7 +4,7 @@
    Usage: node stamp-word.mjs <input-image> <Word> [output] [--weight 700]
    e.g.:  node stamp-word.mjs gemini-scan.png Scan ../pins/01-scan/final.jpg
 
-   Weight: 600 SemiBold, 700 Bold (default), 800 ExtraBold.
+   Weight: 600 SemiBold (default), 700 Bold, 800 ExtraBold.
 
    Coordinates match the rendered pins: at 1080×1350 the word is 158 px Inter
    ExtraBold at left 72 px, bottom 96 px. Any input size scales proportionally
@@ -18,8 +18,8 @@ import { chromium } from "playwright";
 
 const argv = process.argv.slice(2);
 const wIdx = argv.indexOf("--weight");
-const WEIGHT = wIdx === -1 ? 700 : parseInt(argv[wIdx + 1], 10);
-const FACE = { 600: "SemiBold", 700: "Bold", 800: "ExtraBold" }[WEIGHT] || "Bold";
+const WEIGHT = wIdx === -1 ? 600 : parseInt(argv[wIdx + 1], 10);
+const FACE = { 600: "SemiBold", 700: "Bold", 800: "ExtraBold" }[WEIGHT] || "SemiBold";
 const [input, word, output] = argv.filter((a, i) => !a.startsWith("--") && argv[i - 1] !== "--weight");
 if (!input || !word) {
   console.error("usage: node stamp-word.mjs <input-image> <Word> [output]");
