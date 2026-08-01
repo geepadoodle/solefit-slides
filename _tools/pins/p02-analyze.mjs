@@ -1,0 +1,152 @@
+// Pin 2 — "Analyze": the scan report, measurements + verdict.
+export default {
+  slug: "02-analyze",
+  word: "Analyze",
+  wedge: "none",
+  device: { rx: "3deg", ry: "-8deg", rz: "2deg", tx: "56px", ty: "-6px" },
+  contact: { bottom: "148px", shift: "36px" },
+
+  screen: `
+    <div class="statusbar">
+      <span>9:41</span>
+      <span class="right">
+        <svg width="40" height="26" viewBox="0 0 20 13"><g fill="#111113"><rect x="0" y="8" width="3" height="5" rx="1"/><rect x="5" y="6" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="13" rx="1"/></g></svg>
+        <svg width="36" height="26" viewBox="0 0 18 13"><path fill="#111113" d="M9 11.5 6.6 9.1a3.4 3.4 0 0 1 4.8 0L9 11.5Zm4.1-4.1a6.2 6.2 0 0 0-8.2 0L3.2 5.7a8.6 8.6 0 0 1 11.6 0l-1.7 1.7ZM9 0c3.2 0 6.2 1.2 8.5 3.4l-1.7 1.7A9.6 9.6 0 0 0 9 2.4a9.6 9.6 0 0 0-6.8 2.7L.5 3.4A12 12 0 0 1 9 0Z"/></svg>
+        <svg width="54" height="26" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="21" height="12" rx="3.5" fill="none" stroke="#111113" stroke-opacity="0.4"/><rect x="2" y="2" width="15" height="9" rx="2" fill="#111113"/><path d="M23.5 4.5v4a2.2 2.2 0 0 0 0-4Z" fill="#111113" fill-opacity="0.4"/></svg>
+      </span>
+    </div>
+
+    <div class="navrow" style="margin-top:96px;padding-left:56px;padding-right:56px">
+      <span class="back">‹</span>
+      <span class="title" style="font-size:40px">Scan report</span>
+      <span class="spacer"></span>
+      <svg class="icon" width="38" height="46" viewBox="0 0 17 21"><g fill="none" stroke="#6B6B70" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 1v12M4.5 4.5 8.5 1l4 3.5"/><path d="M2.5 9.5H1.5v10h14v-10h-1"/></g></svg>
+    </div>
+
+    <div style="padding:28px 44px 0">
+      <div style="background:#fff;border:2px solid #E6E6E9;border-radius:48px;padding:52px 52px 44px">
+
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:27px;font-weight:800;letter-spacing:0.18em;color:#6B6B70">SCAN REPORT</span>
+          <span style="font-size:27px;color:#8A8A8F">Jul 31, 9:41&nbsp;PM</span>
+        </div>
+
+        <div style="display:flex;gap:28px;margin-top:44px;align-items:flex-start">
+          <svg width="60" height="60" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="#15803D"/><path d="m7.5 13.5 3.5 3.5 7-7.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div style="font-size:46px;font-weight:700;letter-spacing:-0.02em">Clean capture</div>
+            <div style="font-size:30px;color:#6B6B70;margin-top:8px;line-height:1.35">Both feet in one frame — the numbers are solid.</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:44px;margin-top:52px">
+          <div style="flex:1;text-align:center">
+            <div style="font-size:25px;font-weight:800;letter-spacing:0.16em;color:#6B6B70">LEFT</div>
+            <canvas id="fL" width="300" height="470" style="width:300px;height:470px;margin:16px 0 4px"></canvas>
+            <div style="font-size:37px;font-weight:700">26.6 × 9.8 cm</div>
+            <div style="font-size:25px;color:#8A8A8F;margin-top:6px">266×98·61 mm</div>
+          </div>
+          <div style="flex:1;text-align:center">
+            <div style="font-size:25px;font-weight:800;letter-spacing:0.16em;color:#6B6B70">RIGHT</div>
+            <canvas id="fR" width="300" height="470" style="width:300px;height:470px;margin:16px 0 4px"></canvas>
+            <div style="font-size:37px;font-weight:700">27.1 × 10.0 cm</div>
+            <div style="font-size:25px;color:#8A8A8F;margin-top:6px">271×100·63 mm</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px;margin-top:56px">
+          <div style="flex:1.12;background:#F2F2F4;border-radius:30px;padding:30px 32px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:0.14em;color:#6B6B70">YOUR SIZE</div>
+            <div style="font-size:48px;font-weight:800;margin-top:10px">US 10</div>
+          </div>
+          <div style="flex:1;background:#F2F2F4;border-radius:30px;padding:30px 32px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:0.14em;color:#6B6B70">WIDTH</div>
+            <div style="font-size:48px;font-weight:800;margin-top:10px">D&thinsp;·&thinsp;std</div>
+          </div>
+          <div style="flex:1.3;background:rgba(180,83,9,0.10);border-radius:30px;padding:30px 32px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:0.14em;color:#B45309">ASYMMETRY</div>
+            <div style="font-size:48px;font-weight:800;margin-top:10px;color:#B45309">5&nbsp;mm</div>
+          </div>
+        </div>
+
+        <div style="height:2px;background:#E6E6E9;margin:48px 0 38px"></div>
+
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <span style="width:14px;height:14px;border-radius:999px;background:#B45309;flex:none;transform:translateY(-4px)"></span>
+            <span style="font-size:31px;line-height:1.35;color:#111113">Right foot runs 5&nbsp;mm longer — size to the right.</span>
+          </div>
+          <div style="display:flex;gap:20px;align-items:baseline">
+            <span style="width:14px;height:14px;border-radius:999px;background:#6B6B70;flex:none;transform:translateY(-4px)"></span>
+            <span style="font-size:31px;line-height:1.35;color:#111113">High instep — low-volume shoes press before they pinch.</span>
+          </div>
+        </div>
+
+        <div style="height:2px;background:#E6E6E9;margin:40px 0 30px"></div>
+        <div style="font-size:24px;color:#8A8A8F">LiDAR scan · quality 0.92 · both feet, one session</div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:44px;right:44px;bottom:430px">
+      <div style="background:#111113;color:#fff;border-radius:999px;padding:36px 0;text-align:center;font-size:34px;font-weight:700">Set as active scan</div>
+    </div>
+
+    <script>
+      // Same dorsal outline the scanner paints, traced at report scale.
+      function reportFoot(id, mir, fl, fw) {
+        const P = [[0,-0.04],[0.32,-0.018],[0.47,0.09],[0.55,0.21],[0.5,0.36],[0.52,0.52],
+          [0.7,0.66],[0.94,0.78],[1,0.88],[0.92,0.965],[0.5,1],[0,0.995],[-0.5,0.965],
+          [-0.86,0.905],[-1,0.8],[-0.94,0.675],[-0.8,0.5],[-0.72,0.32],[-0.52,0.14],[-0.34,-0.016]];
+        const toes = [[0.58,0.96,0.132,0.5],[0.26,0.985,0.098,0.29],[0,0.985,0.088,0.27],
+                      [-0.25,0.965,0.076,0.24],[-0.47,0.938,0.06,0.22]];
+        const c = document.getElementById(id), ctx = c.getContext("2d");
+        const cx = c.width/2, cy = 30;
+        const pts = P.map(([u,v]) => [cx + mir*u*fw/2, cy + v*fl]);
+        ctx.lineJoin = ctx.lineCap = "round";
+        ctx.beginPath();
+        const n = pts.length;
+        ctx.moveTo((pts[0][0]+pts[n-1][0])/2,(pts[0][1]+pts[n-1][1])/2);
+        for (let i=0;i<n;i++){const p=pts[i],q=pts[(i+1)%n];
+          ctx.quadraticCurveTo(p[0],p[1],(p[0]+q[0])/2,(p[1]+q[1])/2);}
+        ctx.closePath();
+        for (const [u,v,l,w] of toes) {
+          const tx = cx + mir*u*fw/2, ty = cy + v*fl, tl = l*fl, tw = w*fw/4;
+          ctx.moveTo(tx+tw, ty+tl*0.3);
+          ctx.ellipse(tx, ty+tl*0.3, tw, tl*0.72, mir*u*0.22, 0, 7);
+        }
+        ctx.fillStyle = "#F2F2F4"; ctx.fill();
+        ctx.strokeStyle = "#111113"; ctx.lineWidth = 3.4; ctx.stroke();
+      }
+      reportFoot("fL", 1, 380, 158);
+      reportFoot("fR", -1, 390, 162);
+    </script>`,
+
+  caption: `
+# Pin 2 — Analyze
+
+Post SECOND (pin second) so the profile grid reads Scan → Analyze → Choose.
+
+## Caption
+
+This is what your feet actually are 📐
+
+Length, width, instep height, arch — per foot, in millimetres. Not "probably
+a 10." The report calls out the things a shoebox never will, like the 5 mm
+between your left and right (a half size is 4.2 mm — most people are past
+that and don't know it).
+
+Rule the report enforces: fit the bigger foot.
+
+Scan → Analyze → Choose. This is step two.
+
+#solefit #shoefit #footmeasurement #shoesize #widefeet #higharch #sneakers #fitcheck
+
+## Alt text
+
+A phone on a dark studio backdrop showing a SoleFit scan report: a green
+"Clean capture" verdict, two traced foot outlines with measurements — left
+26.6 by 9.8 cm, right 27.1 by 10 cm — size US 10, width D standard, a 5 mm
+asymmetry flag, and advice to size to the right foot. The word "Analyze" is
+written large at the bottom left.
+`,
+};
