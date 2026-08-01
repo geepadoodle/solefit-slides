@@ -124,7 +124,6 @@ html, body {
   position: absolute; left: 72px; bottom: 96px; z-index: 60;
   font-size: 158px; font-weight: 800; letter-spacing: -0.025em; color: #fff;
   line-height: 1.06;
-  border-bottom: 7px solid #fff; padding-bottom: 10px;
   text-shadow: 0 12px 44px rgba(0,0,0,0.55);
 }
 
