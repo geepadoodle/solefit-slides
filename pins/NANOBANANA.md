@@ -78,9 +78,10 @@ actual feet beats both.
 > pixel-identical to the attachment, including "26.6 × 9.8 cm",
 > "27.1 × 10.0 cm", the tiles ("US 10", "100 mm", "5 mm"), the toes-up
 > foot outlines, and the whole "YOUR FEET · VS THE FEET DATABASE" table —
-> four gauge rows (Width, Arch, Instep, Toe box) with their teal slider
-> dots, percentile captions ("wider than 58% of scans"…) and P-values
-> (P58, P85, P81, P34) exactly as positioned.
+> four gauge rows with solid color-coded bars and slider dots (Width green,
+> Arch teal, Instep blue, Toe box purple), their percentile captions
+> ("wider than 58% of scans"…) and P-values (P58, P85, P81, P34) exactly
+> as positioned.
 >
 > Typography on the post: one large white word, "Analyze", bold geometric
 > sans (like Inter ExtraBold), bottom-left, underlined, partially overlapping

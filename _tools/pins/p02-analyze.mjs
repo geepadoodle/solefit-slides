@@ -74,14 +74,14 @@ export default {
           .frow .lb { font-size:22px; font-weight:800; letter-spacing:0.15em; color:#6B6B70; }
           .frow .pv { margin-left:14px; font-size:20px; color:#8A8A8F; }
           .frow .vl { margin-left:auto; font-size:29px; font-weight:600; color:#111113; }
-          .gauge { position:relative; height:10px; border-radius:999px; background:#F2F2F4; margin-top:20px; }
-          .gauge b { position:absolute; left:0; top:0; bottom:0; border-radius:999px; background:#0F766E; opacity:0.25; }
-          .gauge i { position:absolute; top:50%; width:22px; height:22px; margin:-11px 0 0 -11px;
-                     border-radius:999px; background:#0F766E; border:4px solid #fff;
-                     box-shadow:0 1px 6px rgba(0,0,0,0.25); }
+          .gauge { position:relative; height:14px; border-radius:999px; background:#E8E8EC; margin-top:20px; }
+          .gauge b { position:absolute; left:0; top:0; bottom:0; border-radius:999px; }
+          .gauge i { position:absolute; top:50%; width:26px; height:26px; margin:-13px 0 0 -13px;
+                     border-radius:999px; border:5px solid #fff;
+                     box-shadow:0 2px 8px rgba(0,0,0,0.3); }
           .pcap { display:flex; justify-content:space-between; margin-top:14px;
                   font-size:21px; color:#8A8A8F; }
-          .pcap b { color:#0F766E; font-weight:700; }
+          .pcap b { font-weight:700; }
         </style>
 
         <div style="display:flex;align-items:center;gap:14px;margin-top:44px">
@@ -91,23 +91,23 @@ export default {
 
         <div class="frow">
           <div class="top"><span class="lb">WIDTH</span><span class="pv">measured</span><span class="vl">Standard width</span></div>
-          <div class="gauge"><b style="width:58%"></b><i style="left:58%"></i></div>
-          <div class="pcap"><span>wider than <b>58%</b> of scans</span><span>P58</span></div>
+          <div class="gauge"><b style="width:58%;background:#15803D"></b><i style="left:58%;background:#15803D"></i></div>
+          <div class="pcap"><span>wider than <b style="color:#15803D">58%</b> of scans</span><span>P58</span></div>
         </div>
         <div class="frow">
           <div class="top"><span class="lb">ARCH</span><span class="pv">measured</span><span class="vl">High arch</span></div>
-          <div class="gauge"><b style="width:85%"></b><i style="left:85%"></i></div>
-          <div class="pcap"><span>higher than <b>85%</b> of scans</span><span>P85</span></div>
+          <div class="gauge"><b style="width:85%;background:#0F766E"></b><i style="left:85%;background:#0F766E"></i></div>
+          <div class="pcap"><span>higher than <b style="color:#0F766E">85%</b> of scans</span><span>P85</span></div>
         </div>
         <div class="frow">
           <div class="top"><span class="lb">INSTEP</span><span class="pv">measured</span><span class="vl">63 mm · high volume</span></div>
-          <div class="gauge"><b style="width:81%"></b><i style="left:81%"></i></div>
-          <div class="pcap"><span>more volume than <b>81%</b> of scans</span><span>P81</span></div>
+          <div class="gauge"><b style="width:81%;background:#1D4ED8"></b><i style="left:81%;background:#1D4ED8"></i></div>
+          <div class="pcap"><span>more volume than <b style="color:#1D4ED8">81%</b> of scans</span><span>P81</span></div>
         </div>
         <div class="frow">
           <div class="top"><span class="lb">TOE BOX</span><span class="pv">measured</span><span class="vl">Tapered toes</span></div>
-          <div class="gauge"><b style="width:34%"></b><i style="left:34%"></i></div>
-          <div class="pcap"><span>narrower taper than <b>66%</b> of scans</span><span>P34</span></div>
+          <div class="gauge"><b style="width:34%;background:#7E22CE"></b><i style="left:34%;background:#7E22CE"></i></div>
+          <div class="pcap"><span>narrower taper than <b style="color:#7E22CE">66%</b> of scans</span><span>P34</span></div>
         </div>
 
         <div style="height:2px;background:#E6E6E9;margin:26px 0 22px"></div>
@@ -189,8 +189,8 @@ A phone on a dark studio backdrop showing a SoleFit scan report: a green
 "Clean capture" verdict, two traced toes-up foot outlines with measurements —
 left 26.6 by 9.8 cm, right 27.1 by 10 cm — tiles for size US 10, width
 100 mm and a 5 mm asymmetry flag, then a "Your feet vs the feet database"
-table with percentile gauges: standard width at P58, high arch at P85,
-63 mm high-volume instep at P81, tapered toe box at P34. The word "Analyze"
+table with bright color-coded percentile gauges — green width at P58, teal arch at P85,
+blue 63 mm high-volume instep at P81, purple tapered toe box at P34. The word "Analyze"
 is written large at the bottom left.
 `,
 };

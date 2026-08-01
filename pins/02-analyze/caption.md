@@ -23,6 +23,6 @@ A phone on a dark studio backdrop showing a SoleFit scan report: a green
 "Clean capture" verdict, two traced toes-up foot outlines with measurements —
 left 26.6 by 9.8 cm, right 27.1 by 10 cm — tiles for size US 10, width
 100 mm and a 5 mm asymmetry flag, then a "Your feet vs the feet database"
-table with percentile gauges: standard width at P58, high arch at P85,
-63 mm high-volume instep at P81, tapered toe box at P34. The word "Analyze"
+table with bright color-coded percentile gauges — green width at P58, teal arch at P85,
+blue 63 mm high-volume instep at P81, purple tapered toe box at P34. The word "Analyze"
 is written large at the bottom left.
