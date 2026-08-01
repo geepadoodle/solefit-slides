@@ -38,8 +38,10 @@ Four requirements, and one of them can't come from the model:
 > natural sensor grain across the whole frame. Indistinguishable from a real
 > photo taken by a product photographer.
 >
-> The phone occupies the upper two thirds of the frame. The bottom quarter of
-> the image is pure flat black, reserved for the caption word.
+> The phone is fully contained in the upper three quarters of the frame — its
+> bottom edge, including any reflection, ends well above the lower quarter.
+> The bottom quarter of the image is pure flat black, empty, reserved for the
+> caption word; nothing enters it.
 >
 > The attached screenshot is the phone's screen. Keep every UI element on it
 > exactly as it is — the status bar, the "LiDAR · BOTH FEET" pill, the "Hold
@@ -61,8 +63,10 @@ Four requirements, and one of them can't come from the model:
 > drawn or illustrated, discard it entirely and generate a real photograph in
 > its place.
 >
-> Then add the caption word "Scan" — the complete word, every letter fully
-> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Then add the caption word "Scan" in the empty black band below the phone —
+> the complete word, every letter fully visible, with clear black space
+> between the word and the phone. The word must NOT touch, overlap or cross
+> the phone at any point.
 > Font: Inter SemiBold (weight 600 — medium weight, NOT bold or heavy),
 > white, no underline. Size: the capital letter is exactly one eighth of the
 > image height tall. Position: bottom-left corner of the image — the gap
@@ -90,8 +94,10 @@ Four requirements, and one of them can't come from the model:
 > natural sensor grain across the whole frame. Indistinguishable from a real
 > photo taken by a product photographer.
 >
-> The phone occupies the upper two thirds of the frame. The bottom quarter of
-> the image is pure flat black, reserved for the caption word.
+> The phone is fully contained in the upper three quarters of the frame — its
+> bottom edge, including any reflection, ends well above the lower quarter.
+> The bottom quarter of the image is pure flat black, empty, reserved for the
+> caption word; nothing enters it.
 >
 > The attached screenshot is the phone's screen. Place it on the display
 > exactly as it is — every number, label, gauge bar, foot outline and word
@@ -100,8 +106,10 @@ Four requirements, and one of them can't come from the model:
 > sits under glass with a subtle reflection, and the white interface casts no
 > light onto the black background.
 >
-> Then add the caption word "Analyze" — the complete word, every letter fully
-> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Then add the caption word "Analyze" in the empty black band below the phone —
+> the complete word, every letter fully visible, with clear black space
+> between the word and the phone. The word must NOT touch, overlap or cross
+> the phone at any point.
 > Font: Inter SemiBold (weight 600 — medium weight, NOT bold or heavy),
 > white, no underline. Size: the capital letter is exactly one eighth of the
 > image height tall — it is a longer word, so at
@@ -129,8 +137,10 @@ Four requirements, and one of them can't come from the model:
 > natural sensor grain across the whole frame. Indistinguishable from a real
 > photo taken by a product photographer.
 >
-> The phone occupies the upper two thirds of the frame. The bottom quarter of
-> the image is pure flat black, reserved for the caption word.
+> The phone is fully contained in the upper three quarters of the frame — its
+> bottom edge, including any reflection, ends well above the lower quarter.
+> The bottom quarter of the image is pure flat black, empty, reserved for the
+> caption word; nothing enters it.
 >
 > The attached screenshot is the phone's screen. Place it on the display
 > exactly as it is — every shoe name, brand line, row number, size line and
@@ -139,8 +149,10 @@ Four requirements, and one of them can't come from the model:
 > the screen — keep that cut. The screen is emissive: it glows faintly and
 > sits under glass with a subtle reflection.
 >
-> Then add the caption word "Choose" — the complete word, every letter fully
-> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Then add the caption word "Choose" in the empty black band below the phone —
+> the complete word, every letter fully visible, with clear black space
+> between the word and the phone. The word must NOT touch, overlap or cross
+> the phone at any point.
 > Font: Inter SemiBold (weight 600 — medium weight, NOT bold or heavy),
 > white, no underline. Size: the capital letter is exactly one eighth of the
 > image height tall. Position: bottom-left corner of the image — the gap
@@ -155,7 +167,8 @@ Four requirements, and one of them can't come from the model:
 
 ## Checking a result
 
-1. The word: complete, bottom-left, medium weight (not heavy), same letter
+1. The word: complete, bottom-left, sitting clear of the phone with black
+   space between them — no overlap. Medium weight (not heavy), same letter
    height across all three, no underline, no sparkle/star glyph.
 2. Background truly black, no glow or shadow.
 3. Screen text matches the attachment — brand lines (NIKE not MIKE, JORDAN
