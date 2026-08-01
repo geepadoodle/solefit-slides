@@ -3,10 +3,12 @@
 One generation per post. Open a FRESH chat each time, attach the matching
 `screenshot.png`, paste the prompt, nothing else.
 
-Placement note: image models cannot follow pixel coordinates ("x=76px"
-produced a giant word behind the phone). These prompts describe placement
-the way the model actually understands it — corner, margins, width span,
-and stacking order — stated identically in all three.
+Placement note: each generation runs in a fresh chat, so "same as the other
+posts" means nothing to the model — the word spec is therefore absolute and
+IDENTICAL in all three prompts: letter height one eighth of the image
+height, bottom-left corner, both gaps equal to half a letter height. Pixel
+coordinates don't work (they produced a giant word behind the phone);
+fractions of the image do.
 
 ---
 
@@ -25,14 +27,16 @@ and stacking order — stated identically in all three.
 > crew socks on an oak wood floor, shins entering from the bottom edge, toes
 > pointing up and away, natural light.
 >
-> Finally add the caption word "Scan" — the complete word, every letter fully
-> visible, drawn IN FRONT of everything so nothing covers any part of it.
-> Font Inter ExtraBold, white, no underline. Position: the bottom-left corner
-> of the image, a small margin (about one letter-width) from the left edge
-> and the same margin up from the bottom edge. Size: the word spans about one
-> third of the image width — a caption in the corner, NOT a giant backdrop
-> word. Absolutely nothing else in the frame: no sparkle or star glyph in any
-> corner, no logos, no watermarks, no extra text.
+> Finally add the caption word "Scan" — the complete word, every letter
+> fully visible, drawn IN FRONT of everything so nothing covers any part of
+> it. Font: Inter ExtraBold, white, no underline. Size: the capital letter
+> is exactly one eighth of the image height tall. Position: bottom-left
+> corner of the image — the gap between the first letter and the left edge,
+> and the gap between the word and the bottom edge, are both equal to half a
+> letter height. Do not enlarge, shrink, or re-center the word to fit the
+> composition; the phone must not cover it. Absolutely nothing else in the
+> frame: no sparkle or star glyph in any corner, no logos, no watermarks, no
+> extra text.
 
 ---
 
@@ -51,14 +55,15 @@ and stacking order — stated identically in all three.
 >
 > Finally add the caption word "Analyze" — the complete word, every letter
 > fully visible, drawn IN FRONT of everything so nothing covers any part of
-> it. Font Inter ExtraBold, white, no underline. Position: the bottom-left
-> corner of the image, a small margin (about one letter-width) from the left
-> edge and the same margin up from the bottom edge. Size: the SAME letter
-> height as the words on the other posts in this series — because it is a
-> longer word it spans about half the image width; never enlarge or shrink
-> the letters. A caption in the corner, NOT a giant backdrop word. Absolutely
-> nothing else in the frame: no sparkle or star glyph in any corner, no
-> logos, no watermarks, no extra text.
+> it. Font: Inter ExtraBold, white, no underline. Size: the capital letter
+> is exactly one eighth of the image height tall — it is a longer word, so at that
+> fixed letter height it simply runs wider. Position: bottom-left
+> corner of the image — the gap between the first letter and the left edge,
+> and the gap between the word and the bottom edge, are both equal to half a
+> letter height. Do not enlarge, shrink, or re-center the word to fit the
+> composition; the phone must not cover it. Absolutely nothing else in the
+> frame: no sparkle or star glyph in any corner, no logos, no watermarks, no
+> extra text.
 
 ---
 
@@ -78,20 +83,22 @@ and stacking order — stated identically in all three.
 >
 > Finally add the caption word "Choose" — the complete word, every letter
 > fully visible, drawn IN FRONT of everything so nothing covers any part of
-> it. Font Inter ExtraBold, white, no underline. Position: the bottom-left
-> corner of the image, a small margin (about one letter-width) from the left
-> edge and the same margin up from the bottom edge. Size: the word spans
-> about one third of the image width, the same letter height as the other
-> posts in this series — a caption in the corner, NOT a giant backdrop word.
-> Absolutely nothing else in the frame: no sparkle or star glyph in any
-> corner, no logos, no watermarks, no extra text.
+> it. Font: Inter ExtraBold, white, no underline. Size: the capital letter
+> is exactly one eighth of the image height tall. Position: bottom-left
+> corner of the image — the gap between the first letter and the left edge,
+> and the gap between the word and the bottom edge, are both equal to half a
+> letter height. Do not enlarge, shrink, or re-center the word to fit the
+> composition; the phone must not cover it. Absolutely nothing else in the
+> frame: no sparkle or star glyph in any corner, no logos, no watermarks, no
+> extra text.
 
 ---
 
 ## Checking a result (30 seconds each)
 
-1. The word: complete, in front of everything, bottom-left corner, roughly
-   the same letter height across all three, no underline.
+1. The word: complete, in front of everything, bottom-left corner, letter
+   height ~1/8 of image height, first letter the same distance from the left
+   edge in all three, no underline.
 2. Screen text matches the attached screenshot — brand lines (NIKE not MIKE,
    JORDAN not JERDAN), "½ size up", "US 10", the fit percentages.
 3. No sparkle/star glyph anywhere.
