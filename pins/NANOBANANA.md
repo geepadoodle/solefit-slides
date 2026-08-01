@@ -1,14 +1,12 @@
 # Nano Banana prompts — final
 
 One generation per post. Open a FRESH chat each time, attach the matching
-`screenshot.png`, paste the prompt, nothing else. The screen-protection line
-is baked in (retyped screen text was the failure in round one), the word spec
-is identical in all three, and decorations are banned (round one added a
-sparkle glyph).
+`screenshot.png`, paste the prompt, nothing else.
 
-If a result still has mangled screen text, don't argue with it in-thread —
-fresh chat, same prompt, re-roll. And whatever comes back, the typography can
-be normalized deterministically afterwards (see the last section).
+Placement note: image models cannot follow pixel coordinates ("x=76px"
+produced a giant word behind the phone). These prompts describe placement
+the way the model actually understands it — corner, margins, width span,
+and stacking order — stated identically in all three.
 
 ---
 
@@ -16,7 +14,8 @@ be normalized deterministically afterwards (see the last section).
 
 > Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
 > floats at a slight tilt in a dark charcoal photo studio with a soft glow
-> behind it and a deep shadow below it.
+> behind it and a deep shadow below it. The phone sits in the upper two
+> thirds of the frame, leaving the bottom strip of the image clear.
 >
 > The attached screenshot is the phone's screen. Treat every UI element on it
 > as a locked layer: copy the pills, brackets, LEFT/RIGHT tags, capture ring,
@@ -26,12 +25,14 @@ be normalized deterministically afterwards (see the last section).
 > crew socks on an oak wood floor, shins entering from the bottom edge, toes
 > pointing up and away, natural light.
 >
-> Then add exactly one graphic element on top: the word "Scan" in the font
-> Inter ExtraBold, white, 158 px tall on this canvas, no underline, its first
-> letter starting 76 px from the left edge with its baseline 135 px above the
-> bottom edge. Same size and position as the other posts in this series.
-> Nothing else — no sparkles, stars, logos, watermarks or extra text
-> anywhere.
+> Finally add the caption word "Scan" — the complete word, every letter fully
+> visible, drawn IN FRONT of everything so nothing covers any part of it.
+> Font Inter ExtraBold, white, no underline. Position: the bottom-left corner
+> of the image, a small margin (about one letter-width) from the left edge
+> and the same margin up from the bottom edge. Size: the word spans about one
+> third of the image width — a caption in the corner, NOT a giant backdrop
+> word. Absolutely nothing else in the frame: no sparkle or star glyph in any
+> corner, no logos, no watermarks, no extra text.
 
 ---
 
@@ -39,19 +40,25 @@ be normalized deterministically afterwards (see the last section).
 
 > Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
 > stands almost upright, centered, in a dark charcoal photo studio with a
-> soft spotlight glow behind it and a deep shadow below it.
+> soft spotlight glow behind it and a deep shadow below it. The phone sits in
+> the upper two thirds of the frame, leaving the bottom strip of the image
+> clear.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every number, label, gauge bar,
 > outline and word keeps its position, wording and spelling. Do not retype,
 > redraw or "clean up" anything on the screen.
 >
-> Then add exactly one graphic element on top: the word "Analyze" in the font
-> Inter ExtraBold, white, 158 px tall on this canvas, no underline, its first
-> letter starting 76 px from the left edge with its baseline 135 px above the
-> bottom edge. Same size and position as the other posts in this series — it
-> is a long word, let it run wide, never shrink it. Nothing else — no
-> sparkles, stars, logos, watermarks or extra text anywhere.
+> Finally add the caption word "Analyze" — the complete word, every letter
+> fully visible, drawn IN FRONT of everything so nothing covers any part of
+> it. Font Inter ExtraBold, white, no underline. Position: the bottom-left
+> corner of the image, a small margin (about one letter-width) from the left
+> edge and the same margin up from the bottom edge. Size: the SAME letter
+> height as the words on the other posts in this series — because it is a
+> longer word it spans about half the image width; never enlarge or shrink
+> the letters. A caption in the corner, NOT a giant backdrop word. Absolutely
+> nothing else in the frame: no sparkle or star glyph in any corner, no
+> logos, no watermarks, no extra text.
 
 ---
 
@@ -60,7 +67,8 @@ be normalized deterministically afterwards (see the last section).
 > Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
 > leans at a slight angle in a dark charcoal photo studio with a soft glow
 > behind it, a deep shadow below it, and a faint diagonal floor split in the
-> lower right.
+> lower right. The phone sits in the upper two thirds of the frame, leaving
+> the bottom strip of the image clear.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every shoe name, brand line,
@@ -68,34 +76,38 @@ be normalized deterministically afterwards (see the last section).
 > spelling. Do not retype, redraw or "clean up" anything on the screen. The
 > list is cut off by the bottom of the screen — keep that cut.
 >
-> Then add exactly one graphic element on top: the word "Choose" in the font
-> Inter ExtraBold, white, 158 px tall on this canvas, no underline, its first
-> letter starting 76 px from the left edge with its baseline 135 px above the
-> bottom edge. Same size and position as the other posts in this series.
-> Nothing else — no sparkles, stars, logos, watermarks or extra text
-> anywhere.
+> Finally add the caption word "Choose" — the complete word, every letter
+> fully visible, drawn IN FRONT of everything so nothing covers any part of
+> it. Font Inter ExtraBold, white, no underline. Position: the bottom-left
+> corner of the image, a small margin (about one letter-width) from the left
+> edge and the same margin up from the bottom edge. Size: the word spans
+> about one third of the image width, the same letter height as the other
+> posts in this series — a caption in the corner, NOT a giant backdrop word.
+> Absolutely nothing else in the frame: no sparkle or star glyph in any
+> corner, no logos, no watermarks, no extra text.
 
 ---
 
 ## Checking a result (30 seconds each)
 
-1. Read the screen against the attached screenshot — brand lines (NIKE, not
-   MIKE; JORDAN, not JERDAN), "½ size up", "US 10", the fit percentages.
-2. The word: white, no underline, starts at the same corner spot as the other
-   two, same letter size (Analyze must not be bigger).
+1. The word: complete, in front of everything, bottom-left corner, roughly
+   the same letter height across all three, no underline.
+2. Screen text matches the attached screenshot — brand lines (NIKE not MIKE,
+   JORDAN not JERDAN), "½ size up", "US 10", the fit percentages.
 3. No sparkle/star glyph anywhere.
 4. Dynamic Island small, about a third of the screen width.
 
-Bad screen text → fresh chat, same prompt, re-roll. Bad word only → keep the
-image and normalize the type instead (below).
+Anything off → fresh chat, same prompt, re-roll. Words drift → keep the best
+images and normalize the type deterministically (below) instead of
+re-rolling for typography.
 
-## Type normalization (the deterministic fix)
+## Type normalization (the guaranteed fix)
 
-The words sit on flat dark backdrop in every layout, so they can be patched
-without touching the rest: erase the generated word, stamp the real Inter
-ExtraBold at 158 px, x=76, baseline y=1215 — identical across all three.
-Send the finals back to Claude in this repo and ask for "type normalization";
-it's scripted, not generated, so it's exact.
+The caption words sit over flat dark backdrop, so they can be replaced
+exactly: erase the generated word, stamp real Inter ExtraBold at the same
+size and corner position across all three images. Send the finals back to
+Claude in this repo and ask for "type normalization" — it's scripted, not
+generated, so the result is pixel-identical across the set.
 
 ## Posting
 
