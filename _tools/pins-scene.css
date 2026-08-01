@@ -42,12 +42,12 @@ html, body {
 .device {
   position: absolute;
   width: 560px; height: 1188px;
-  left: 50%; top: 41%;
+  left: 50%; top: 42%;
   margin: -594px 0 0 -280px;      /* center, then nudge via --tx/--ty */
   transform:
     translate(var(--tx, 0px), var(--ty, 0px))
     rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotateZ(var(--rz, 0deg))
-    scale(var(--s, 0.84));
+    scale(var(--s, 0.80));
   border-radius: 88px;
   /* titanium body: edge catch-lights top-left, falloff bottom-right */
   background: linear-gradient(145deg, #4A4A52 0%, #232329 30%, #101014 62%, #2E2E36 100%);

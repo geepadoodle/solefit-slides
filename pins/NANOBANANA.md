@@ -38,10 +38,12 @@ Four requirements, and one of them can't come from the model:
 > natural sensor grain across the whole frame. Indistinguishable from a real
 > photo taken by a product photographer.
 >
-> The phone is fully contained in the upper three quarters of the frame — its
-> bottom edge, including any reflection, ends well above the lower quarter.
-> The bottom quarter of the image is pure flat black, empty, reserved for the
-> caption word; nothing enters it.
+> The ENTIRE phone is visible inside the frame — the whole device from its top
+> edge to its bottom edge, both side edges included, with a clear black margin
+> of at least 5% of the image on every side. Nothing about the phone is
+> cropped, cut off, or touching any border of the image. It is fully contained
+> in the upper three quarters; the bottom quarter is pure flat black, empty,
+> reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Keep every UI element on it
 > exactly as it is — the status bar, the "LiDAR · BOTH FEET" pill, the "Hold
@@ -94,10 +96,12 @@ Four requirements, and one of them can't come from the model:
 > natural sensor grain across the whole frame. Indistinguishable from a real
 > photo taken by a product photographer.
 >
-> The phone is fully contained in the upper three quarters of the frame — its
-> bottom edge, including any reflection, ends well above the lower quarter.
-> The bottom quarter of the image is pure flat black, empty, reserved for the
-> caption word; nothing enters it.
+> The ENTIRE phone is visible inside the frame — the whole device from its top
+> edge to its bottom edge, both side edges included, with a clear black margin
+> of at least 5% of the image on every side. Nothing about the phone is
+> cropped, cut off, or touching any border of the image. It is fully contained
+> in the upper three quarters; the bottom quarter is pure flat black, empty,
+> reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Place it on the display
 > exactly as it is — every number, label, gauge bar, foot outline and word
@@ -137,10 +141,12 @@ Four requirements, and one of them can't come from the model:
 > natural sensor grain across the whole frame. Indistinguishable from a real
 > photo taken by a product photographer.
 >
-> The phone is fully contained in the upper three quarters of the frame — its
-> bottom edge, including any reflection, ends well above the lower quarter.
-> The bottom quarter of the image is pure flat black, empty, reserved for the
-> caption word; nothing enters it.
+> The ENTIRE phone is visible inside the frame — the whole device from its top
+> edge to its bottom edge, both side edges included, with a clear black margin
+> of at least 5% of the image on every side. Nothing about the phone is
+> cropped, cut off, or touching any border of the image. It is fully contained
+> in the upper three quarters; the bottom quarter is pure flat black, empty,
+> reserved for the caption word.
 >
 > The attached screenshot is the phone's screen. Place it on the display
 > exactly as it is — every shoe name, brand line, row number, size line and
@@ -167,15 +173,17 @@ Four requirements, and one of them can't come from the model:
 
 ## Checking a result
 
-1. The word: complete, bottom-left, sitting clear of the phone with black
+1. The whole phone visible — no edge of the device touching or crossing any
+   border of the image.
+2. The word: complete, bottom-left, sitting clear of the phone with black
    space between them — no overlap. Medium weight (not heavy), same letter
    height across all three, no underline, no sparkle/star glyph.
-2. Background truly black, no glow or shadow.
-3. Screen text matches the attachment — brand lines (NIKE not MIKE, JORDAN
+3. Background truly black, no glow or shadow.
+4. Screen text matches the attachment — brand lines (NIKE not MIKE, JORDAN
    not JERDAN), "½ size up", "US 10", the fit percentages.
-4. Scan only: the feet are a real photograph — skin texture on the shins,
+5. Scan only: the feet are a real photograph — skin texture on the shins,
    real knit weave, real wood grain. If they look drawn, re-roll.
-5. Phone reads as a photo: metal grain, edge highlight, slight focus falloff.
+6. Phone reads as a photo: metal grain, edge highlight, slight focus falloff.
 
 Anything off → fresh chat, same prompt, re-roll. Typography is never a
 reason to re-roll — that comes from the stamp.

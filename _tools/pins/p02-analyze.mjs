@@ -3,7 +3,7 @@ export default {
   slug: "02-analyze",
   word: "Analyze",
   wedge: "none",
-  device: { rx: "3deg", ry: "-8deg", rz: "2deg", tx: "56px", ty: "-64px" },
+  device: { rx: "3deg", ry: "-8deg", rz: "2deg", tx: "56px", ty: "0px" },
   contact: { bottom: "196px", shift: "36px" },
 
   screen: `
