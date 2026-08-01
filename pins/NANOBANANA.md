@@ -1,158 +1,85 @@
 # Generating the pinned posts with Nano Banana
 
 Three generations, one screenshot each. Attach the `screenshot.png` from the
-matching pin folder (or a real capture from the app — better when you have
-one) and paste the full prompt below. Ask for **1080×1350 (4:5 portrait)**;
-if the tool won't, generate portrait and crop.
-
-After every generation, zoom in and check: screen text unchanged (every
-digit, every shoe name), Dynamic Island small (~⅓ of screen width), the big
-word spelled right and starting at the same bottom-left anchor as the other
-two posts (first letter at x = 76 px, baseline at y = 1215 px, 158 px Inter
-in all three — line the posts up side by side to verify),
-no underline under the word, no invented UI. Retyping screen text is the model's most
-common failure — if it drifts, re-run with "Keep the attached screenshot
-pixel-exact on the display. Only generate the phone body and the scene
-around it."
+matching pin folder and paste the prompt — nothing else. Keep prompts SHORT:
+long spec-heavy prompts flip Gemini into describing/analyzing the image
+instead of generating. Lead with the edit command, keep it under ~120 words,
+and escalate with the add-on lines only if a specific thing goes wrong.
 
 ---
 
 ## Prompt 1 — Scan  (attach `01-scan/screenshot.png`)
 
-> Create a 1080×1350 (4:5 portrait) Instagram post: a premium app-marketing
-> device shot in a dark studio.
->
-> Scene: near-black charcoal studio (#0D0D10), a soft gray key-light glow
-> behind the phone, a subtle diagonal concrete-floor wedge in the lower-left,
-> fine film grain — high-end product photography.
->
-> Device: a titanium iPhone 15 Pro floating at a noticeable 3D angle — tilted
-> about 10 degrees with visible perspective, like it's leaning. Photoreal:
-> thin bezels, correctly small Dynamic Island (about one third of the screen
-> width), side buttons, soft screen glare, deep contact shadow.
->
-> The attached image is the phone's screen, and it defines the UI overlay
-> ONLY. Completely replace the illustrated camera view behind the UI with a
-> photorealistic iPhone camera frame: a true first-person view — the
-> photographer holds the phone at chest height pointing straight down at
-> their OWN two feet in white crew socks on an oak hardwood floor.
-> Orientation matters: shins enter the frame from the BOTTOM edge (nearest
-> the camera) and the toes point AWAY, toward the top of the frame. Feet
-> slightly splayed, soft indoor light, gentle shadows under the feet, real
-> fabric wrinkles and knit texture, subtle sensor grain. It must look like a
-> real photo, not a render.
->
-> On top of that photo, reproduce the UI overlay from the attachment exactly:
-> status bar, "LiDAR · BOTH FEET" pill, "Hold steady — capturing both feet"
-> pill, white corner brackets, LEFT ✓ and RIGHT ✓ tags, the capture ring, and
-> the LiDAR / Face ID depth / Photos chips — same positions, same text.
->
-> Typography: the single word "Scan" in the font Inter, ExtraBold (800)
-> weight, set at exactly 158 px font size on this 1080×1350 canvas (cap
-> height ≈ 115 px), letter spacing −2%, pure white (#FFFFFF), no underline,
-> no outline, no shadow effects beyond a soft natural drop. Placement is
-> exact and must be identical across this three-post series: the first
-> letter's left edge at x = 76 px from the left border, the word's baseline
-> at y = 1215 px from the top (i.e. 135 px above the bottom border). If the
-> canvas is not 1080×1350, scale everything proportionally: left edge 7% of
-> width, baseline 90% of height, font size 11.7% of height. The word overlaps whatever it crosses (the
-> phone's lower edge included) and is drawn on top. No other text, no logos,
-> no watermarks, no hands.
-
-If the feet still look synthetic, split it: first generate only the photo
-("first-person iPhone photo looking straight down at my own feet in white
-crew socks on an oak floor — toes pointing away toward the top of frame,
-shins entering from the bottom, natural light — realistic, no UI"), then
-attach that photo AND the screenshot: "use the first image as the camera
-view, overlay the UI from the second exactly." A real 5-second photo of
-actual feet beats both.
+> Edit this image into a 1080×1350 Instagram post. Show this phone screen on
+> a titanium iPhone 15 Pro floating at a slight tilt in a dark charcoal
+> photo studio, soft glow behind it, deep shadow under it. Replace only the
+> camera view behind the UI with a realistic photo: looking straight down at
+> your own feet in white crew socks on an oak wood floor, shins entering
+> from the bottom of the screen, toes pointing up and away. Keep every UI
+> element (pills, brackets, chips, ring) exactly where it is. Add one big
+> white word "Scan" in Inter ExtraBold, 158 px, no underline, bottom-left —
+> first letter 7% from the left edge, baseline 10% above the bottom. Nothing
+> else in the frame.
 
 ---
 
 ## Prompt 2 — Analyze  (attach `02-analyze/screenshot.png`)
 
-> Create a 1080×1350 (4:5 portrait) Instagram post: a premium app-marketing
-> device shot in a dark studio.
->
-> Scene: near-black charcoal studio (#0D0D10) with a soft spotlight glow
-> centered behind the phone — no floor wedge, pure dark backdrop, fine film
-> grain, high-end product photography.
->
-> Device: a titanium iPhone 15 Pro standing nearly upright, only a slight
-> turn, centered. Photoreal: thin bezels, correctly small Dynamic Island
-> (about one third of the screen width), side buttons, soft screen glare,
-> deep contact shadow.
->
-> The attached image is the phone's screen. Place it on the display exactly
-> as provided — do not redraw, restyle, retype, or "improve" any of it.
-> Every word, number, footprint outline, icon and layout must remain
-> pixel-identical to the attachment, including "26.6 × 9.8 cm",
-> "27.1 × 10.0 cm", the tiles ("US 10", "100 mm", "5 mm"), the toes-up
-> foot outlines, and the whole "YOUR FEET · VS THE FEET DATABASE" table —
-> four gauge rows with solid color-coded bars and slider dots (Width green,
-> Arch teal, Instep blue, Toe box purple), their percentile captions
-> ("wider than 58% of scans"…) and P-values (P58, P85, P81, P34) exactly
-> as positioned.
->
-> Typography: the single word "Analyze" in the font Inter, ExtraBold (800)
-> weight, set at exactly 158 px font size on this 1080×1350 canvas (cap
-> height ≈ 115 px), letter spacing −2%, pure white (#FFFFFF), no underline,
-> no outline, no shadow effects beyond a soft natural drop. Placement is
-> exact and must be identical across this three-post series: the first
-> letter's left edge at x = 76 px from the left border, the word's baseline
-> at y = 1215 px from the top (i.e. 135 px above the bottom border). If the
-> canvas is not 1080×1350, scale everything proportionally: left edge 7% of
-> width, baseline 90% of height, font size 11.7% of height. The word overlaps whatever it crosses (the
-> phone's lower edge included) and is drawn on top. It is a long word — keep
-> the SAME letter size as the other posts and let it run wide; never shrink
-> or move it to fit. No other text, no logos, no watermarks, no hands.
+> Edit this image into a 1080×1350 Instagram post. Show this phone screen,
+> completely unchanged, on a titanium iPhone 15 Pro standing almost upright
+> in a dark charcoal photo studio, soft spotlight glow behind it, deep
+> shadow under it. Do not redraw or retype anything on the screen. Add one
+> big white word "Analyze" in Inter ExtraBold, 158 px, no underline,
+> bottom-left — first letter 7% from the left edge, baseline 10% above the
+> bottom, same letter size as the other posts in this series. Nothing else
+> in the frame.
 
 ---
 
 ## Prompt 3 — Choose  (attach `03-choose/screenshot.png`)
 
-> Create a 1080×1350 (4:5 portrait) Instagram post: a premium app-marketing
-> device shot in a dark studio.
->
-> Scene: near-black charcoal studio (#0D0D10), a soft gray key-light glow
-> behind the phone, a subtle diagonal floor split in the lower-right, fine
-> film grain — high-end product photography.
->
-> Device: a titanium iPhone 15 Pro leaning about 7 degrees with the
-> perspective turned slightly left. Photoreal: thin bezels, correctly small
-> Dynamic Island (about one third of the screen width), side buttons, soft
-> screen glare, deep contact shadow.
->
-> The attached image is the phone's screen. Place it on the display exactly
-> as provided — do not redraw, restyle, retype, or "improve" any of it.
-> Every shoe name (Pegasus 41, Ultraboost Light, Air Jordan 1 High OG,
-> Clifton 9, Dunk Low, 990v6, Samba OG, Blazer Mid '77, Old Skool), the row
-> numbers 1 through 9, every "% fit" badge, every size line and the chip row
-> must remain pixel-identical to the attachment — row 9 is sliced off by the
-> bottom edge of the screen mid-scroll, keep that cut exactly.
->
-> Typography: the single word "Choose" in the font Inter, ExtraBold (800)
-> weight, set at exactly 158 px font size on this 1080×1350 canvas (cap
-> height ≈ 115 px), letter spacing −2%, pure white (#FFFFFF), no underline,
-> no outline, no shadow effects beyond a soft natural drop. Placement is
-> exact and must be identical across this three-post series: the first
-> letter's left edge at x = 76 px from the left border, the word's baseline
-> at y = 1215 px from the top (i.e. 135 px above the bottom border). If the
-> canvas is not 1080×1350, scale everything proportionally: left edge 7% of
-> width, baseline 90% of height, font size 11.7% of height. The word overlaps whatever it crosses (the
-> phone's lower edge included) and is drawn on top. No other text, no logos,
-> no watermarks, no hands.
+> Edit this image into a 1080×1350 Instagram post. Show this phone screen,
+> completely unchanged, on a titanium iPhone 15 Pro leaning at a slight
+> angle in a dark charcoal photo studio, soft glow behind it, deep shadow
+> under it, a faint diagonal floor split in the lower-right. Do not redraw
+> or retype anything on the screen — the list is cut off at the bottom,
+> keep that. Add one big white word "Choose" in Inter ExtraBold, 158 px, no
+> underline, bottom-left — first letter 7% from the left edge, baseline 10%
+> above the bottom. Nothing else in the frame.
 
 ---
+
+## If something specific goes wrong, add ONE of these lines and re-run
+
+- Screen text got retyped or mangled:
+  "The screen must stay pixel-identical to the attached image — generate
+  only the phone body, scene and word."
+- Word in the wrong place or wrong size:
+  "The word starts at x=76 px, baseline y=1215 px, 158 px Inter ExtraBold,
+  on the 1080×1350 canvas."
+- Dynamic Island too big:
+  "The Dynamic Island is small — about one third of the screen width."
+- Feet look fake (prompt 1):
+  "The camera view must look like a real iPhone photo, not a render — real
+  sock fabric, real wood grain, natural light."
+- Model still only analyzes instead of generating:
+  start the prompt with "Generate an image:" — and send the prompt and the
+  attachment in the SAME message, with no other conversation before it.
+
+## Two-step fallback for the Scan feet
+
+Generate the photo alone first: "Photo looking straight down at my own feet
+in white crew socks on an oak floor, toes pointing away, shins entering from
+the bottom, natural light, no UI." Then attach that photo AND the
+screenshot: "Put the first image behind the UI of the second, keep all UI
+exactly." A real 5-second photo of actual feet beats both.
 
 ## Capturing real screenshots instead (better input when possible)
 
 - **Choose**: the "Best for your feet" ranking, in the simulator (⌘S saves a PNG).
-- **Analyze**: Profile → scan history → a scan report, ideally with an
-  asymmetry flag.
+- **Analyze**: Profile → scan history → a scan report.
 - **Scan**: needs a real device (the simulator has no camera) — which also
-  gets you real feet in the viewfinder, making prompt 1's replacement step
-  unnecessary.
+  gets you real feet in the viewfinder, no replacement step needed.
 
 ## Posting
 
