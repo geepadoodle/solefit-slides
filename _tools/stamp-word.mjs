@@ -41,12 +41,13 @@ const { w, h } = await page.evaluate(() => {
 });
 
 const k = h / 1350;                       // proportional scale
-const fontDir = pathToFileURL(path.join(HERE, "fonts")).href;
+// embed the font — an in-memory page cannot load file:// fonts
+const fontB64 = (await readFile(path.join(HERE, "fonts", "Inter-ExtraBold.ttf"))).toString("base64");
 
 await page.setViewportSize({ width: w, height: h });
 await page.setContent(`<!doctype html><html><head><style>
   @font-face { font-family: Inter; font-weight: 800;
-               src: url("${fontDir}/Inter-ExtraBold.ttf") format("truetype"); }
+               src: url(data:font/ttf;base64,${fontB64}) format("truetype"); }
   * { margin: 0; }
   body { width: ${w}px; height: ${h}px; overflow: hidden; }
   img  { position: absolute; inset: 0; width: 100%; height: 100%; }
