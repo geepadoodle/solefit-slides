@@ -27,16 +27,32 @@ Each pin folder already contains a `screenshot.png` — the same screens the
 rendered pins use, exported at 1056×2312 like a real capture. They work as
 Nano Banana input as-is.
 
-For the scanner one, you can go a step further: its camera view is
-illustrated, and Nano Banana is good at re-photographing it. Attach
+**The scanner one is special.** Its camera view is illustrated, and it looks
+it — do NOT ask the model to keep it. The attachment's job is only to define
+the UI overlay; the feet must be generated fresh. Attach
 `01-scan/screenshot.png` and add:
 
-> Additionally, make the camera viewfinder content photorealistic: a real
-> overhead photo of two feet in white crew socks standing on an oak wood
-> floor, warm indoor light. Keep every UI element — status bar, "LiDAR ·
-> BOTH FEET" pill, "Hold steady" pill, corner brackets, LEFT ✓ / RIGHT ✓
-> tags, capture ring, and the LiDAR / Face ID depth / Photos chips —
-> exactly as they are in the attachment, same positions and text.
+> The attached image defines the UI overlay ONLY. Completely replace the
+> illustrated camera view behind the UI with a photorealistic iPhone camera
+> frame: shot from chest height pointing straight down at the photographer's
+> own two feet in white crew socks, standing on an oak hardwood floor.
+> Natural perspective — shins foreshortened entering from the top of frame,
+> feet slightly splayed, soft indoor window light, gentle shadows under the
+> feet, believable fabric wrinkles and sock texture, subtle sensor grain.
+> It must look like a real photo, not a render.
+>
+> On top of that photo, reproduce the UI overlay from the attachment exactly:
+> status bar, "LiDAR · BOTH FEET" pill, "Hold steady — capturing both feet"
+> pill, white corner brackets, LEFT ✓ and RIGHT ✓ tags, the capture ring, and
+> the LiDAR / Face ID depth / Photos chips — same positions, same text.
+
+If the result still looks synthetic, generate in two steps: first ask for
+just the photo ("overhead iPhone photo of my own feet in white crew socks on
+oak floor, looking straight down, natural light — realistic, no UI"), pick
+the best one, then attach BOTH that photo and the screenshot: "use the first
+image as the camera view, overlay the UI from the second exactly." Smaller
+asks, better odds. The honest gold standard remains a real 5-second photo of
+actual feet — any phone, looking down — used the same way.
 
 ## 2. The prompts
 
