@@ -21,6 +21,23 @@ Tips for cleaner posts:
 - Portrait orientation, full-screen, no debug overlays.
 - Use a scan with a visible asymmetry flag for Analyze — it's the interesting part.
 
+## 1b. No app build handy? Use the bundled screenshots
+
+Each pin folder already contains a `screenshot.png` — the same screens the
+rendered pins use, exported at 1056×2312 like a real capture. They work as
+Nano Banana input as-is.
+
+For the scanner one, you can go a step further: its camera view is
+illustrated, and Nano Banana is good at re-photographing it. Attach
+`01-scan/screenshot.png` and add:
+
+> Additionally, make the camera viewfinder content photorealistic: a real
+> overhead photo of two feet in white crew socks standing on an oak wood
+> floor, warm indoor light. Keep every UI element — status bar, "LiDAR ·
+> BOTH FEET" pill, "Hold steady" pill, corner brackets, LEFT ✓ / RIGHT ✓
+> tags, capture ring, and the LiDAR / Face ID depth / Photos chips —
+> exactly as they are in the attachment, same positions and text.
+
 ## 2. The prompts
 
 Attach ONE screenshot per generation. Ask for **1080×1350 (4:5 portrait)**.
