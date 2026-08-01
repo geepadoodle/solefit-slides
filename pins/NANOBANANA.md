@@ -1,79 +1,79 @@
-# Nano Banana prompts — final
+# Nano Banana prompts — final (word stamped afterwards)
 
-One generation per post. Open a FRESH chat each time, attach the matching
-`screenshot.png`, paste the prompt, nothing else.
+A diffusion model cannot draw the same word at the same size three times —
+so we no longer ask it to. Gemini generates the three scenes with the
+bottom-left EMPTY; the word is stamped afterwards by a script using the real
+Inter ExtraBold font at fixed coordinates, so the type is byte-identical
+across the set.
 
-Placement note: each generation runs in a fresh chat, so "same as the other
-posts" means nothing to the model — the word spec is therefore absolute and
-IDENTICAL in all three prompts: letter height one eighth of the image
-height, bottom-left corner, both gaps equal to half a letter height. Pixel
-coordinates don't work (they produced a giant word behind the phone);
-fractions of the image do.
+Workflow:
+1. Fresh chat per image → attach the matching `screenshot.png` → paste the
+   prompt below.
+2. Collect the three results (no words on them).
+3. Stamp the words — either send the three images back to Claude in this
+   repo ("stamp the words"), or run:
+
+   ```bash
+   cd _tools
+   node stamp-word.mjs gemini-scan.png    Scan    ../pins/01-scan/final.jpg
+   node stamp-word.mjs gemini-analyze.png Analyze ../pins/02-analyze/final.jpg
+   node stamp-word.mjs gemini-choose.png  Choose  ../pins/03-choose/final.jpg
+   ```
+
+   The script scales to any input size (158 px Inter ExtraBold at 1080×1350,
+   proportional otherwise) — identical font, size, and first-letter position
+   on all three, guaranteed.
 
 ---
 
 ## Prompt 1 — Scan  (attach `01-scan/screenshot.png`)
 
-> Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
-> floats at a slight tilt in a dark charcoal photo studio with a soft glow
-> behind it and a deep shadow below it. The phone sits in the upper two
-> thirds of the frame, leaving the bottom strip of the image clear.
+> Generate an image: a 1080×1350 Instagram post background. A titanium
+> iPhone 15 Pro floats at a slight tilt in a dark charcoal photo studio with
+> a soft glow behind it and a deep shadow below it. The phone sits in the
+> upper two thirds of the frame; the bottom quarter of the image is empty
+> dark backdrop with nothing in it — text will be added there later.
 >
-> The attached screenshot is the phone's screen. Treat every UI element on it
-> as a locked layer: copy the pills, brackets, LEFT/RIGHT tags, capture ring,
-> chips and status bar exactly — position, wording and spelling — without
-> retyping or redrawing them. Replace ONLY the camera view behind that UI
-> with a realistic photo: looking straight down at your own feet in white
-> crew socks on an oak wood floor, shins entering from the bottom edge, toes
-> pointing up and away, natural light.
+> The attached screenshot is the phone's screen. Treat every UI element on
+> it as a locked layer: copy the pills, brackets, LEFT/RIGHT tags, capture
+> ring, chips and status bar exactly — position, wording and spelling —
+> without retyping or redrawing them. Replace ONLY the camera view behind
+> that UI with a realistic photo: looking straight down at your own feet in
+> white crew socks on an oak wood floor, shins entering from the bottom
+> edge, toes pointing up and away, natural light.
 >
-> Finally add the caption word "Scan" — the complete word, every letter
-> fully visible, drawn IN FRONT of everything so nothing covers any part of
-> it. Font: Inter ExtraBold, white, no underline. Size: the capital letter
-> is exactly one eighth of the image height tall. Position: bottom-left
-> corner of the image — the gap between the first letter and the left edge,
-> and the gap between the word and the bottom edge, are both equal to half a
-> letter height. Do not enlarge, shrink, or re-center the word to fit the
-> composition; the phone must not cover it. Absolutely nothing else in the
-> frame: no sparkle or star glyph in any corner, no logos, no watermarks, no
-> extra text.
+> No text, words, captions, logos, sparkles, stars or watermarks anywhere
+> outside the phone screen.
 
 ---
 
 ## Prompt 2 — Analyze  (attach `02-analyze/screenshot.png`)
 
-> Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
-> stands almost upright, centered, in a dark charcoal photo studio with a
-> soft spotlight glow behind it and a deep shadow below it. The phone sits in
-> the upper two thirds of the frame, leaving the bottom strip of the image
-> clear.
+> Generate an image: a 1080×1350 Instagram post background. A titanium
+> iPhone 15 Pro stands almost upright, centered, in a dark charcoal photo
+> studio with a soft spotlight glow behind it and a deep shadow below it.
+> The phone sits in the upper two thirds of the frame; the bottom quarter of
+> the image is empty dark backdrop with nothing in it — text will be added
+> there later.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every number, label, gauge bar,
 > outline and word keeps its position, wording and spelling. Do not retype,
 > redraw or "clean up" anything on the screen.
 >
-> Finally add the caption word "Analyze" — the complete word, every letter
-> fully visible, drawn IN FRONT of everything so nothing covers any part of
-> it. Font: Inter ExtraBold, white, no underline. Size: the capital letter
-> is exactly one eighth of the image height tall — it is a longer word, so at that
-> fixed letter height it simply runs wider. Position: bottom-left
-> corner of the image — the gap between the first letter and the left edge,
-> and the gap between the word and the bottom edge, are both equal to half a
-> letter height. Do not enlarge, shrink, or re-center the word to fit the
-> composition; the phone must not cover it. Absolutely nothing else in the
-> frame: no sparkle or star glyph in any corner, no logos, no watermarks, no
-> extra text.
+> No text, words, captions, logos, sparkles, stars or watermarks anywhere
+> outside the phone screen.
 
 ---
 
 ## Prompt 3 — Choose  (attach `03-choose/screenshot.png`)
 
-> Generate an image: a 1080×1350 Instagram post. A titanium iPhone 15 Pro
-> leans at a slight angle in a dark charcoal photo studio with a soft glow
-> behind it, a deep shadow below it, and a faint diagonal floor split in the
-> lower right. The phone sits in the upper two thirds of the frame, leaving
-> the bottom strip of the image clear.
+> Generate an image: a 1080×1350 Instagram post background. A titanium
+> iPhone 15 Pro leans at a slight angle in a dark charcoal photo studio with
+> a soft glow behind it, a deep shadow below it, and a faint diagonal floor
+> split in the lower right. The phone sits in the upper two thirds of the
+> frame; the bottom quarter of the image is empty dark backdrop with nothing
+> in it — text will be added there later.
 >
 > The attached screenshot is the phone's screen. Treat it as a locked layer:
 > place it on the display exactly as it is — every shoe name, brand line,
@@ -81,40 +81,20 @@ fractions of the image do.
 > spelling. Do not retype, redraw or "clean up" anything on the screen. The
 > list is cut off by the bottom of the screen — keep that cut.
 >
-> Finally add the caption word "Choose" — the complete word, every letter
-> fully visible, drawn IN FRONT of everything so nothing covers any part of
-> it. Font: Inter ExtraBold, white, no underline. Size: the capital letter
-> is exactly one eighth of the image height tall. Position: bottom-left
-> corner of the image — the gap between the first letter and the left edge,
-> and the gap between the word and the bottom edge, are both equal to half a
-> letter height. Do not enlarge, shrink, or re-center the word to fit the
-> composition; the phone must not cover it. Absolutely nothing else in the
-> frame: no sparkle or star glyph in any corner, no logos, no watermarks, no
-> extra text.
+> No text, words, captions, logos, sparkles, stars or watermarks anywhere
+> outside the phone screen.
 
 ---
 
-## Checking a result (30 seconds each)
+## Checking a Gemini result (30 seconds each)
 
-1. The word: complete, in front of everything, bottom-left corner, letter
-   height ~1/8 of image height, first letter the same distance from the left
-   edge in all three, no underline.
+1. Bottom quarter empty — no word, no sparkle/star glyph, nothing.
 2. Screen text matches the attached screenshot — brand lines (NIKE not MIKE,
    JORDAN not JERDAN), "½ size up", "US 10", the fit percentages.
-3. No sparkle/star glyph anywhere.
-4. Dynamic Island small, about a third of the screen width.
+3. Dynamic Island small, about a third of the screen width.
 
-Anything off → fresh chat, same prompt, re-roll. Words drift → keep the best
-images and normalize the type deterministically (below) instead of
-re-rolling for typography.
-
-## Type normalization (the guaranteed fix)
-
-The caption words sit over flat dark backdrop, so they can be replaced
-exactly: erase the generated word, stamp real Inter ExtraBold at the same
-size and corner position across all three images. Send the finals back to
-Claude in this repo and ask for "type normalization" — it's scripted, not
-generated, so the result is pixel-identical across the set.
+Anything off → fresh chat, same prompt, re-roll. Then stamp the words
+(workflow above) — typography is never a reason to re-roll again.
 
 ## Posting
 
