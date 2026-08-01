@@ -1,8 +1,10 @@
 /* Stamp the series word onto a generated post image — real Inter ExtraBold at
    fixed proportional coordinates, so every post in the set matches exactly.
 
-   Usage: node stamp-word.mjs <input-image> <Word> [output]
+   Usage: node stamp-word.mjs <input-image> <Word> [output] [--weight 700]
    e.g.:  node stamp-word.mjs gemini-scan.png Scan ../pins/01-scan/final.jpg
+
+   Weight: 600 SemiBold, 700 Bold (default), 800 ExtraBold.
 
    Coordinates match the rendered pins: at 1080×1350 the word is 158 px Inter
    ExtraBold at left 72 px, bottom 96 px. Any input size scales proportionally
@@ -14,7 +16,11 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import path from "node:path";
 import { chromium } from "playwright";
 
-const [input, word, output] = process.argv.slice(2);
+const argv = process.argv.slice(2);
+const wIdx = argv.indexOf("--weight");
+const WEIGHT = wIdx === -1 ? 700 : parseInt(argv[wIdx + 1], 10);
+const FACE = { 600: "SemiBold", 700: "Bold", 800: "ExtraBold" }[WEIGHT] || "Bold";
+const [input, word, output] = argv.filter((a, i) => !a.startsWith("--") && argv[i - 1] !== "--weight");
 if (!input || !word) {
   console.error("usage: node stamp-word.mjs <input-image> <Word> [output]");
   process.exit(2);
@@ -42,19 +48,19 @@ const { w, h } = await page.evaluate(() => {
 
 const k = h / 1350;                       // proportional scale
 // embed the font — an in-memory page cannot load file:// fonts
-const fontB64 = (await readFile(path.join(HERE, "fonts", "Inter-ExtraBold.ttf"))).toString("base64");
+const fontB64 = (await readFile(path.join(HERE, "fonts", `Inter-${FACE}.ttf`))).toString("base64");
 
 await page.setViewportSize({ width: w, height: h });
 await page.setContent(`<!doctype html><html><head><style>
-  @font-face { font-family: Inter; font-weight: 800;
+  @font-face { font-family: Inter; font-weight: ${WEIGHT};
                src: url(data:font/ttf;base64,${fontB64}) format("truetype"); }
   * { margin: 0; }
   body { width: ${w}px; height: ${h}px; overflow: hidden; }
   img  { position: absolute; inset: 0; width: 100%; height: 100%; }
   .word {
     position: absolute; left: ${72 * k}px; bottom: ${96 * k}px;
-    font: 800 ${158 * k}px Inter, sans-serif;
-    letter-spacing: -0.025em; line-height: 1.06; color: #fff;
+    font: ${WEIGHT} ${158 * k}px Inter, sans-serif;
+    letter-spacing: -0.02em; line-height: 1.06; color: #fff;
     text-shadow: 0 ${12 * k}px ${44 * k}px rgba(0,0,0,0.55);
   }
 </style></head><body>
@@ -70,4 +76,4 @@ await page.screenshot({
   ...(out.match(/\.png$/i) ? {} : { quality: 93 }),
 });
 await browser.close();
-console.log(`${out}  (${w}x${h}, word ${Math.round(158 * k)}px at x=${Math.round(72 * k)})`);
+console.log(`${out}  (${w}x${h}, Inter ${FACE} ${Math.round(158 * k)}px at x=${Math.round(72 * k)})`);

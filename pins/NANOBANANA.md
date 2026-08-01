@@ -7,7 +7,7 @@ Four requirements, and one of them can't come from the model:
 - **Same font, size and position for the word in all three** — NOT possible
   from three independent generations. The prompts therefore leave the
   bottom-left empty, and the word is stamped afterwards with the real
-  Inter ExtraBold file at fixed coordinates. On a pure black backdrop the
+  Inter Bold file at fixed coordinates. On a pure black backdrop the
   stamp is seamless.
 
 ## Workflow
@@ -16,7 +16,8 @@ Four requirements, and one of them can't come from the model:
    prompt. You get three photoreal, word-less images.
 2. Send those three back to Claude in this repo: **"stamp the words"**.
    (Or run it yourself: `cd _tools && node stamp-word.mjs <image> Scan
-   ../pins/01-scan/final.jpg`, etc.)
+   ../pins/01-scan/final.jpg`, etc. — add `--weight 600` for lighter or
+   `--weight 800` for heavier.)
 3. Three finished posts with byte-identical typography.
 
 ---
