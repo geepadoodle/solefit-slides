@@ -34,38 +34,33 @@ export default {
           <span style="font-size:27px;color:#8A8A8F">Jul 31, 9:41&nbsp;PM</span>
         </div>
 
-        <div style="display:flex;gap:28px;margin-top:36px;align-items:flex-start">
+        <div style="display:flex;gap:28px;margin-top:28px;align-items:flex-start">
           <svg width="60" height="60" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="#15803D"/><path d="m7.5 13.5 3.5 3.5 7-7.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
-            <div style="font-size:46px;font-weight:700;letter-spacing:-0.02em">Clean capture</div>
-            <div style="font-size:30px;color:#6B6B70;margin-top:8px;line-height:1.35">Both feet in one frame — the numbers are solid.</div>
+            <div style="font-size:44px;font-weight:700;letter-spacing:-0.02em">Clean capture</div>
+            <div style="font-size:29px;color:#6B6B70;margin-top:6px;line-height:1.3">Both feet in one frame — the numbers are solid.</div>
           </div>
         </div>
 
-        <div style="display:flex;gap:44px;margin-top:40px">
+        <div style="display:flex;gap:44px;margin-top:28px">
           <div style="flex:1;text-align:center">
             <div style="font-size:25px;font-weight:800;letter-spacing:0.16em;color:#6B6B70">LEFT</div>
-            <canvas id="fL" width="300" height="420" style="width:300px;height:420px;margin:12px 0 2px"></canvas>
-            <div style="font-size:37px;font-weight:700">26.6 × 9.8 cm</div>
+            <canvas id="fL" width="280" height="340" style="width:280px;height:340px;margin:8px 0 0"></canvas>
+            <div style="font-size:34px;font-weight:700">26.6 × 9.8 cm</div>
             <div style="font-size:25px;color:#8A8A8F;margin-top:6px">266×98·61 mm</div>
           </div>
           <div style="flex:1;text-align:center">
             <div style="font-size:25px;font-weight:800;letter-spacing:0.16em;color:#6B6B70">RIGHT</div>
-            <canvas id="fR" width="300" height="420" style="width:300px;height:420px;margin:12px 0 2px"></canvas>
-            <div style="font-size:37px;font-weight:700">27.1 × 10.0 cm</div>
+            <canvas id="fR" width="280" height="340" style="width:280px;height:340px;margin:8px 0 0"></canvas>
+            <div style="font-size:34px;font-weight:700">27.1 × 10.0 cm</div>
             <div style="font-size:25px;color:#8A8A8F;margin-top:6px">271×100·63 mm</div>
           </div>
         </div>
 
-        <div style="display:flex;gap:20px;margin-top:44px">
+        <div style="display:flex;gap:20px;margin-top:32px">
           <div class="tile"><div class="tl">YOUR SIZE</div><div class="tv">US 10</div></div>
           <div class="tile"><div class="tl">WIDTH</div><div class="tv">100&nbsp;mm&thinsp;·&thinsp;D</div></div>
           <div class="tile warn"><div class="tl">ASYMMETRY</div><div class="tv">5&nbsp;mm</div></div>
-        </div>
-        <div style="display:flex;gap:20px;margin-top:20px">
-          <div class="tile"><div class="tl">ARCH</div><div class="tv">High</div></div>
-          <div class="tile"><div class="tl">INSTEP</div><div class="tv">63&nbsp;mm</div></div>
-          <div class="tile"><div class="tl">TOE BOX</div><div class="tv">Tapered</div></div>
         </div>
         <style>
           .tile { flex:1; background:#F2F2F4; border-radius:28px; padding:26px 30px; }
@@ -73,22 +68,49 @@ export default {
           .tile.warn .tl, .tile.warn .tv { color:#B45309; }
           .tl { font-size:22px; font-weight:800; letter-spacing:0.13em; color:#6B6B70; }
           .tv { font-size:42px; font-weight:800; margin-top:9px; white-space:nowrap; }
+          .frow { padding:24px 0 22px; }
+          .frow + .frow { border-top:2px solid #E6E6E9; }
+          .frow .top { display:flex; align-items:baseline; }
+          .frow .lb { font-size:22px; font-weight:800; letter-spacing:0.15em; color:#6B6B70; }
+          .frow .pv { margin-left:14px; font-size:20px; color:#8A8A8F; }
+          .frow .vl { margin-left:auto; font-size:29px; font-weight:600; color:#111113; }
+          .gauge { position:relative; height:10px; border-radius:999px; background:#F2F2F4; margin-top:20px; }
+          .gauge b { position:absolute; left:0; top:0; bottom:0; border-radius:999px; background:#0F766E; opacity:0.25; }
+          .gauge i { position:absolute; top:50%; width:22px; height:22px; margin:-11px 0 0 -11px;
+                     border-radius:999px; background:#0F766E; border:4px solid #fff;
+                     box-shadow:0 1px 6px rgba(0,0,0,0.25); }
+          .pcap { display:flex; justify-content:space-between; margin-top:14px;
+                  font-size:21px; color:#8A8A8F; }
+          .pcap b { color:#0F766E; font-weight:700; }
         </style>
 
-        <div style="height:2px;background:#E6E6E9;margin:38px 0 30px"></div>
-
-        <div style="display:flex;flex-direction:column;gap:24px">
-          <div style="display:flex;gap:20px;align-items:baseline">
-            <span style="width:14px;height:14px;border-radius:999px;background:#B45309;flex:none;transform:translateY(-4px)"></span>
-            <span style="font-size:31px;line-height:1.35;color:#111113">Right foot runs 5&nbsp;mm longer — size to the right.</span>
-          </div>
-          <div style="display:flex;gap:20px;align-items:baseline">
-            <span style="width:14px;height:14px;border-radius:999px;background:#6B6B70;flex:none;transform:translateY(-4px)"></span>
-            <span style="font-size:31px;line-height:1.35;color:#111113">High instep — low-volume shoes press before they pinch.</span>
-          </div>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:44px">
+          <span style="width:8px;height:30px;border-radius:999px;background:#0F766E"></span>
+          <span style="font-size:24px;font-weight:800;letter-spacing:0.15em;color:#6B6B70">YOUR FEET&nbsp;&nbsp;·&nbsp;&nbsp;VS THE FEET DATABASE</span>
         </div>
 
-        <div style="height:2px;background:#E6E6E9;margin:32px 0 24px"></div>
+        <div class="frow">
+          <div class="top"><span class="lb">WIDTH</span><span class="pv">measured</span><span class="vl">Standard · D</span></div>
+          <div class="gauge"><b style="width:58%"></b><i style="left:58%"></i></div>
+          <div class="pcap"><span>wider than <b>58%</b> of scans</span><span>P58</span></div>
+        </div>
+        <div class="frow">
+          <div class="top"><span class="lb">ARCH</span><span class="pv">measured</span><span class="vl">High arch</span></div>
+          <div class="gauge"><b style="width:85%"></b><i style="left:85%"></i></div>
+          <div class="pcap"><span>higher than <b>85%</b> of scans</span><span>P85</span></div>
+        </div>
+        <div class="frow">
+          <div class="top"><span class="lb">INSTEP</span><span class="pv">measured</span><span class="vl">63 mm · high volume</span></div>
+          <div class="gauge"><b style="width:81%"></b><i style="left:81%"></i></div>
+          <div class="pcap"><span>more volume than <b>81%</b> of scans</span><span>P81</span></div>
+        </div>
+        <div class="frow">
+          <div class="top"><span class="lb">TOE BOX</span><span class="pv">measured</span><span class="vl">Tapered toes</span></div>
+          <div class="gauge"><b style="width:34%"></b><i style="left:34%"></i></div>
+          <div class="pcap"><span>narrower taper than <b>66%</b> of scans</span><span>P34</span></div>
+        </div>
+
+        <div style="height:2px;background:#E6E6E9;margin:26px 0 22px"></div>
         <div style="font-size:24px;color:#8A8A8F">LiDAR scan · quality 0.92 · both feet, one session</div>
       </div>
     </div>
@@ -137,8 +159,8 @@ export default {
         ctx.fillStyle = "#F2F2F4"; ctx.fill();
         ctx.strokeStyle = "#111113"; ctx.lineWidth = 3.4; ctx.stroke();
       }
-      reportFoot("fL", 1, 340, 142);
-      reportFoot("fR", -1, 349, 146);
+      reportFoot("fL", 1, 272, 116);
+      reportFoot("fR", -1, 279, 119);
     </script>`,
 
   caption: `
@@ -165,8 +187,10 @@ Scan → Analyze → Choose. This is step two.
 
 A phone on a dark studio backdrop showing a SoleFit scan report: a green
 "Clean capture" verdict, two traced toes-up foot outlines with measurements —
-left 26.6 by 9.8 cm, right 27.1 by 10 cm — and a metrics grid: size US 10,
-width 100 mm D, a 5 mm asymmetry flag, high arch, 63 mm instep, tapered toe
-box. The word "Analyze" is written large at the bottom left.
+left 26.6 by 9.8 cm, right 27.1 by 10 cm — tiles for size US 10, width
+100 mm D and a 5 mm asymmetry flag, then a "Your feet vs the feet database"
+table with percentile gauges: width standard-D at P58, high arch at P85,
+63 mm high-volume instep at P81, tapered toe box at P34. The word "Analyze"
+is written large at the bottom left.
 `,
 };
