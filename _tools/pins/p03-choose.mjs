@@ -81,6 +81,7 @@ export default {
         { n:"990v6",            b:"NEW BALANCE", img:"assets/lifestyle.jpg", size:"Your size: US 10 (2E)",   pct:84 },
         { n:"Samba OG",         b:"ADIDAS",      img:"assets/lifestyle.jpg", size:"½ size up · US 10.5", up:1, pct:76 },
         { n:"Blazer Mid '77",   b:"NIKE",        img:"assets/lifestyle.jpg", size:"Your size: US 10",        pct:73 },
+        { n:"Old Skool",        b:"VANS",        img:"assets/skate.jpg",     size:"Your size: US 10",        pct:71 },
       ];
       const fitColor = p => p >= 88 ? "#15803D" : p >= 74 ? "#3F7F14" : p >= 58 ? "#B45309" : "#DC2626";
       document.getElementById("rows").innerHTML = shoes.map((x, i) => \`
@@ -122,8 +123,8 @@ Scan → Analyze → Choose. Step three: buy once, keep them.
 A phone leaning on a dark studio floor showing SoleFit's "Best for your feet"
 ranking: a numbered list of shoes scored for one person's scan — 1 Pegasus 41
 at 94% fit, 2 Ultraboost Light 91%, 3 Air Jordan 1 89% needing a half size up,
-4 Clifton 9, 5 Dunk Low, 6 990v6 in a 2E width, 7 Samba OG, with row 8 cut off
-by the bottom of the screen mid-scroll — each with a product photo and a
+4 Clifton 9, 5 Dunk Low, 6 990v6 in a 2E width, 7 Samba OG, 8 Blazer Mid '77,
+with row 9 sliced off by the bottom of the screen mid-scroll — each with a product photo and a
 fit-percentage badge. The word "Choose" is written large at the bottom left.
 `,
 };

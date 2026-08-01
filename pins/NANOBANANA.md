@@ -105,10 +105,10 @@ actual feet beats both.
 > The attached image is the phone's screen. Place it on the display exactly
 > as provided — do not redraw, restyle, retype, or "improve" any of it.
 > Every shoe name (Pegasus 41, Ultraboost Light, Air Jordan 1 High OG,
-> Clifton 9, Dunk Low, 990v6, Samba OG, Blazer Mid '77), the row numbers
-> 1 through 8, every "% fit" badge, every size line and the chip row must
-> remain pixel-identical to the attachment — the list runs past the bottom
-> of the screen, keep that.
+> Clifton 9, Dunk Low, 990v6, Samba OG, Blazer Mid '77, Old Skool), the row
+> numbers 1 through 9, every "% fit" badge, every size line and the chip row
+> must remain pixel-identical to the attachment — row 9 is sliced off by the
+> bottom edge of the screen mid-scroll, keep that cut exactly.
 >
 > Typography on the post: one large white word, "Choose", bold geometric
 > sans (like Inter ExtraBold), bottom-left, underlined, partially overlapping
